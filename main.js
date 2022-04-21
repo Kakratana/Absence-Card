@@ -56,9 +56,9 @@ function prev(){
       // ctx.fillRect(0, 750, 800, 50);
       ctx.fillStyle = "#1876f2";
       ctx.fillRect(200, 570, 300, 2);
-      ctx.drawImage(logo, 25, 10, 154, 80);
+      ctx.drawImage(logo, 25, 15, 140, 70);
       ctx.fillStyle = "#000";
-      ctx.font = '24pt Krasar'; //Arial
+      ctx.font = '22pt Krasar'; //Arial
       ctx.fillStyle = "#ffffff";
       ctx.fillText("ពាក្យស្នើសុំអនុញ្ញាឈប់សម្រាក", 200, 68);
       ctx.font = '20pt Krasar'; //Arial
