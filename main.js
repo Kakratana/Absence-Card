@@ -52,7 +52,7 @@ function prev(){
       ctx.fillRect(0, 0, 800, 900);
       ctx.fillStyle = "#1876f2";
       ctx.fillRect(0, 0, 800, 100);
-      ctx.fillStyle = "#8bbaf8";
+      ctx.fillStyle = "#f1f3f4";
       ctx.fillRect(0, 750, 800, 50);
       ctx.fillStyle = "#1876f2";
       ctx.fillRect(200, 570, 300, 2);
