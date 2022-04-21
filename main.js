@@ -42,9 +42,9 @@ function prev(){
       name.innerHTML = inName;
       position.innerHTML = inPosition;
       days.innerHTML =  inDays + " ថ្ងៃ";
-      datef.innerHTML = inDateF + "." + inMonthF + "." + inYearF;
-      datet.innerHTML = inDateT + "." + inMonthT + "." + inYearT;
-      datei.innerHTML = inDateI + "." + inMonthI + "." + inYearI;
+      datef.innerHTML = inDateF + " " + inMonthF + " " + inYearF;
+      datet.innerHTML = inDateT + " " + inMonthT + " " + inYearT;
+      datei.innerHTML = inDateI + " " + inMonthI + " " + inYearI;
       reason.innerHTML = inReason;
       
       
