@@ -42,51 +42,60 @@ function prev(){
       name.innerHTML = inName;
       position.innerHTML = inPosition;
       days.innerHTML =  inDays + " ថ្ងៃ";
-      datef.innerHTML = inDateF + " " + inMonthF + " " + inYearF;
-      datet.innerHTML = inDateT + " " + inMonthT + " " + inYearT;
-      datei.innerHTML = inDateI + " " + inMonthI + " " + inYearI;
+      datef.innerHTML = inDateF + "." + inMonthF + "." + inYearF;
+      datet.innerHTML = inDateT + "." + inMonthT + "." + inYearT;
+      datei.innerHTML = inDateI + "." + inMonthI + "." + inYearI;
       reason.innerHTML = inReason;
+      
       
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, 800, 900);
-      ctx.drawImage(logo, 10, 20, 250, 130);
+      ctx.fillStyle = "#1876f2";
+      ctx.fillRect(0, 0, 800, 100);
+      ctx.fillStyle = "#8bbaf8";
+      ctx.fillRect(0, 750, 800, 50);
+      ctx.fillStyle = "#1876f2";
+      ctx.fillRect(200, 570, 300, 2);
+      ctx.drawImage(logo, 25, 10, 154, 80);
       ctx.fillStyle = "#000";
-      ctx.font = '22pt Krasar'; //Arial
-      ctx.fillText("ពាក្យស្នើសុំអនុញ្ញាឈប់សម្រាក", 200, 170);
+      ctx.font = '24pt Krasar'; //Arial
+      ctx.fillStyle = "#ffffff";
+      ctx.fillText("ពាក្យស្នើសុំអនុញ្ញាឈប់សម្រាក", 200, 68);
       ctx.font = '20pt Krasar'; //Arial
-      ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 250);
-      ctx.fillStyle = "#1876f2";
-      ctx.fillText(name.innerHTML, 190, 250);
       ctx.fillStyle = "#000";
-      ctx.fillText("តួនាទី", 380, 250);
+      ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
       ctx.fillStyle = "#1876f2";
-      ctx.fillText(position.innerHTML, 450, 250);
+      ctx.fillText(name.innerHTML, 190, 150);
       ctx.fillStyle = "#000";
-      ctx.fillText("សូមគោរពជូនលោកប្រធានហាងស្រែមាស", 150, 320);
-      ctx.fillText("កម្មវត្ថុ", 50, 390);
-      ctx.fillText("សុំច្បាប់ឈប់សម្រាកចំនួន", 200, 390);
+      ctx.fillText("តួនាទី", 380, 150);
       ctx.fillStyle = "#1876f2";
-      ctx.fillText(days.innerHTML, 470, 390);
+      ctx.fillText(position.innerHTML, 450, 150);
       ctx.fillStyle = "#000";
-      ctx.fillText("ចាប់ពីថ្ងៃទី", 50, 460);
+      ctx.fillText("សូមគោរពជូនលោកប្រធានហាងស្រែមាស", 150, 210);
+      ctx.fillText("កម្មវត្ថុ", 50, 270);
+      ctx.fillText("សុំច្បាប់ឈប់សម្រាកចំនួន", 200, 270);
       ctx.fillStyle = "#1876f2";
-      ctx.fillText(datef.innerHTML, 250, 460);
+      ctx.fillText(days.innerHTML, 470, 270);
       ctx.fillStyle = "#000";
-      ctx.fillText("ដល់ថ្ងៃទី", 50, 530);
+      ctx.fillText("ចាប់ពីថ្ងៃទី", 50, 340);
       ctx.fillStyle = "#1876f2";
-      ctx.fillText(datet.innerHTML, 250, 530);
+      ctx.fillText(datef.innerHTML, 250, 340);
       ctx.fillStyle = "#000";
-      ctx.fillText("ចូលធ្វើការវិញថ្ងៃទី", 50, 600);
+      ctx.fillText("ដល់ថ្ងៃទី", 50, 410);
       ctx.fillStyle = "#1876f2";
-      ctx.fillText(datei.innerHTML, 250, 600);
+      ctx.fillText(datet.innerHTML, 250, 410);
       ctx.fillStyle = "#000";
-      ctx.fillText("មូលហេតុ", 50, 670);
+      ctx.fillText("ចូលធ្វើការវិញថ្ងៃទី", 50, 480);
       ctx.fillStyle = "#1876f2";
-      ctx.fillText(reason.innerHTML, 250, 670);
+      ctx.fillText(datei.innerHTML, 250, 480);
       ctx.fillStyle = "#000";
-      ctx.fillText("សេចក្តីដូចបានជម្រាបខាងលើ", 200, 740);
-      ctx.fillText("សូមលោកប្រធានមេត្តាអនុញ្ញាតដោយក្តីអនុគ្រោះ", 100, 790);
-      ctx.fillText("សូមលោកប្រធានទទួលការគោរពដ៏ខ្ពង់ខ្ពស់អំពីខ្ញុំបាទ/នាងខ្ញុំ។", 50, 840);    
+      ctx.fillText("មូលហេតុ", 50, 550);
+      ctx.fillStyle = "#1876f2";
+      ctx.fillText(reason.innerHTML, 250, 550);
+      ctx.fillStyle = "#000";
+      ctx.fillText("សេចក្តីដូចបានជម្រាបខាងលើ", 200, 620);
+      ctx.fillText("សូមលោកប្រធានមេត្តាអនុញ្ញាតដោយក្តីអនុគ្រោះ", 100, 670);
+      ctx.fillText("សូមលោកប្រធានទទួលការគោរពដ៏ខ្ពង់ខ្ពស់អំពីខ្ញុំបាទ/នាងខ្ញុំ។", 50, 720);    
 }
 
 const download = document.getElementById("down");
