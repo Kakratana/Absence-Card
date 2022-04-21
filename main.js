@@ -10,16 +10,13 @@ const image = document.getElementById("imgDisplayed");
 const logo = document.getElementById("logo");
 
 function prev(){
+      var x = document.getElementById("form");
+      x.style.display = "none";
 
-      var sourceX;
-      var sourceY;
-      var sourceWidth;
-      var sourceHeight;
-      var destWidth = 400;
-      var destHeight = 540;
-      var destX = 40;
-      var destY = 200;
-      
+      var xz = document.getElementById("show");
+      xz.style.display = "block";
+
+
       let inName = document.getElementById("inName").value;
       let inPosition = document.getElementById("inPosition").value;
       let inDays = document.getElementById("inDays").value;
