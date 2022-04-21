@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="back">
+    <form>
+      <h3>Please fill-in the form</h3>
+      <!-- <label>ឈ្មោះ</label> -->
+      <input type="text" id="inName"  placeholder="ឈ្មោះ...">
+      <input type="text" id="inPosition" placeholder="តួនាទី...">
+      <input type="text" id="inDays" value="០១" placeholder="ចំនួនថ្ងៃឈប់សម្រាក...">
+      <label style="width: 100%; float: left;">ចាប់ពីថ្ងៃទី</label>
+      <select style="width: 20%; float: left; margin-right: 1%;" id="inDateF"   placeholder="ចាប់ពីថ្ងៃទី..." required>
+        <option value="០១">០១</option>
+        <option value="០២">០២</option>
+        <option value="០៣">០៣</option>
+        <option value="០៤">០៤</option>
+        <option value="០៥">០៥</option>
+        <option value="០៦">០៦</option>
+        <option value="០៧">០៧</option>
+        <option value="០៨">០៨</option>
+        <option value="០៩">០៩</option>
+        <option value="១០">១០</option>
+        <option value="១១">១១</option>
+        <option value="១២">១២</option>
+        <option value="១៣">១៣</option>
+        <option value="១៤">១៤</option>
+        <option value="១៥">១៥</option>
+        <option value="១៦">១៦</option>
+        <option value="១៧">១៧</option>
+        <option value="១៨">១៨</option>
+        <option value="១៩">១៩</option>
+        <option value="២០">២០</option>
+        <option value="២១">២១</option>
+        <option value="២២">២២</option>
+        <option value="២៣">២៣</option>
+        <option value="២៤">២៤</option>
+        <option value="២៥">២៥</option>
+        <option value="២៦">២៦</option>
+        <option value="២៧">២៧</option>
+        <option value="២៨">២៨</option>
+        <option value="២៩">២៩</option>
+        <option value="៣០">៣០</option>
+        <option value="៣១">៣១</option>
+      </select>
+
+      <select style="width: 30%; float: left; margin-right: 1%;" id="inMonthF"   placeholder="ខែ..." required>
+        <option value="មករា">មករា</option>
+        <option value="កុម្ភៈ">កុម្ភៈ</option>
+        <option value="មិនា">មិនា</option>
+        <option value="មេសា">មេសា</option>
+        <option value="ឧសភា">ឧសភា</option>
+        <option value="មិថុនា">មិថុនា</option>
+        <option value="កក្កដា">កក្កដា</option>
+        <option value="សីហា">សីហា</option>
+        <option value="កញ្ញា">កញ្ញា</option>
+        <option value="តុលា">តុលា</option>
+        <option value="វិច្ឆិកា">វិច្ឆិកា</option>
+        <option value="ឆ្នូ">ឆ្នូ</option>
+        </select>
+
+        <select style="width: 30%; " id="inYearF"   placeholder="ឆ្នាំ..." required>
+					<option value="២០២២">២០២២</option>
+					<option value="២០២៣">២០២៣</option>
+					<option value="២០២៤">២០២៤</option>
+					<option value="២០២៥">២០២៥</option>
+					<option value="២០២៦">២០២៦</option>
+					<option value="២០២៧">២០២៧</option>
+					</select>
+
+          <label style="width: 100%; float: left;">ដល់ថ្ងៃទី</label>
+          <select style="width: 20%; float: left; margin-right: 1%;" id="inDateT"   placeholder="ចាប់ពីថ្ងៃទី..." required>
+            <option value="០១">០១</option>
+            <option value="០២">០២</option>
+            <option value="០៣">០៣</option>
+            <option value="០៤">០៤</option>
+            <option value="០៥">០៥</option>
+            <option value="០៦">០៦</option>
+            <option value="០៧">០៧</option>
+            <option value="០៨">០៨</option>
+            <option value="០៩">០៩</option>
+            <option value="១០">១០</option>
+            <option value="១១">១១</option>
+            <option value="១២">១២</option>
+            <option value="១៣">១៣</option>
+            <option value="១៤">១៤</option>
+            <option value="១៥">១៥</option>
+            <option value="១៦">១៦</option>
+            <option value="១៧">១៧</option>
+            <option value="១៨">១៨</option>
+            <option value="១៩">១៩</option>
+            <option value="២០">២០</option>
+            <option value="២១">២១</option>
+            <option value="២២">២២</option>
+            <option value="២៣">២៣</option>
+            <option value="២៤">២៤</option>
+            <option value="២៥">២៥</option>
+            <option value="២៦">២៦</option>
+            <option value="២៧">២៧</option>
+            <option value="២៨">២៨</option>
+            <option value="២៩">២៩</option>
+            <option value="៣០">៣០</option>
+            <option value="៣១">៣១</option>
+          </select>
+    
+          <select style="width: 30%; float: left; margin-right: 1%;" id="inMonthT"   placeholder="ខែ..." required>
+            <option value="មករា">មករា</option>
+            <option value="កុម្ភៈ">កុម្ភៈ</option>
+            <option value="មិនា">មិនា</option>
+            <option value="មេសា">មេសា</option>
+            <option value="ឧសភា">ឧសភា</option>
+            <option value="មិថុនា">មិថុនា</option>
+            <option value="កក្កដា">កក្កដា</option>
+            <option value="សីហា">សីហា</option>
+            <option value="កញ្ញា">កញ្ញា</option>
+            <option value="តុលា">តុលា</option>
+            <option value="វិច្ឆិកា">វិច្ឆិកា</option>
+            <option value="ឆ្នូ">ឆ្នូ</option>
+            </select>
+    
+            <select style="width: 30%; " id="inYearT"   placeholder="ឆ្នាំ..." required>
+              <option value="២០២២">២០២២</option>
+              <option value="២០២៣">២០២៣</option>
+              <option value="២០២៤">២០២៤</option>
+              <option value="២០២៥">២០២៥</option>
+              <option value="២០២៦">២០២៦</option>
+              <option value="២០២៧">២០២៧</option>
+              </select>
+
+              <label style="width: 100%; float: left;">ចូលធ្វើការវិញថ្ងៃទី</label>
+          <select style="width: 20%; float: left; margin-right: 1%;" id="inDateI"   placeholder="ចាប់ពីថ្ងៃទី..." required>
+            <option value="០១">០១</option>
+            <option value="០២">០២</option>
+            <option value="០៣">០៣</option>
+            <option value="០៤">០៤</option>
+            <option value="០៥">០៥</option>
+            <option value="០៦">០៦</option>
+            <option value="០៧">០៧</option>
+            <option value="០៨">០៨</option>
+            <option value="០៩">០៩</option>
+            <option value="១០">១០</option>
+            <option value="១១">១១</option>
+            <option value="១២">១២</option>
+            <option value="១៣">១៣</option>
+            <option value="១៤">១៤</option>
+            <option value="១៥">១៥</option>
+            <option value="១៦">១៦</option>
+            <option value="១៧">១៧</option>
+            <option value="១៨">១៨</option>
+            <option value="១៩">១៩</option>
+            <option value="២០">២០</option>
+            <option value="២១">២១</option>
+            <option value="២២">២២</option>
+            <option value="២៣">២៣</option>
+            <option value="២៤">២៤</option>
+            <option value="២៥">២៥</option>
+            <option value="២៦">២៦</option>
+            <option value="២៧">២៧</option>
+            <option value="២៨">២៨</option>
+            <option value="២៩">២៩</option>
+            <option value="៣០">៣០</option>
+            <option value="៣១">៣១</option>
+          </select>
+    
+          <select style="width: 30%; float: left; margin-right: 1%;" id="inMonthI"   placeholder="ខែ..." required>
+            <option value="មករា">មករា</option>
+            <option value="កុម្ភៈ">កុម្ភៈ</option>
+            <option value="មិនា">មិនា</option>
+            <option value="មេសា">មេសា</option>
+            <option value="ឧសភា">ឧសភា</option>
+            <option value="មិថុនា">មិថុនា</option>
+            <option value="កក្កដា">កក្កដា</option>
+            <option value="សីហា">សីហា</option>
+            <option value="កញ្ញា">កញ្ញា</option>
+            <option value="តុលា">តុលា</option>
+            <option value="វិច្ឆិកា">វិច្ឆិកា</option>
+            <option value="ឆ្នូ">ឆ្នូ</option>
+            </select>
+    
+            <select style="width: 30%; " id="inYearI"   placeholder="ឆ្នាំ..." required>
+              <option value="២០២២">២០២២</option>
+              <option value="២០២៣">២០២៣</option>
+              <option value="២០២៤">២០២៤</option>
+              <option value="២០២៥">២០២៥</option>
+              <option value="២០២៦">២០២៦</option>
+              <option value="២០២៧">២០២៧</option>
+              </select>
+              <input type="text" id="inReason"  placeholder="មូលហេតុ...">
+
+
+
+
+      
+      <br>    
+    </form>
+
+  </div>
+    <div>
+      <button type="submit" id="preview">Preview</button>
+      </div>
+
+    </body>
+    <div class="container">
+      <canvas id="result" width="720px" height="900px">
+        <header id="head">
+          <div class="camp">
+            <h4>Campus Card</h4>
+            <span>Undergraduate</span>
+          </div>
+          <img src="./Sremeas-Logo.png" id="logo"  >
+        </header>
+
+        <div class="content">
+          <img src="" id="imgDisplayed">
+          <ul>
+            <li id="name"></li>
+            <li id="position"></li>
+            <li id="days"></li>
+            <li id="datef"></li>
+            <li id="datet"></li>
+            <li id="datei"></li>
+            <li id="reason"></li>
+
+
+          </ul>
+        </div>
+
+        </canvas>
+        
+
+    </canvas>
+    <button id="down">Download</button>
+  </div>
+
+
+  <script src="main.js"></script>
+
+
+</body>
+</html>
