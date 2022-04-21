@@ -47,7 +47,7 @@ function prev(){
       datei.innerHTML = inDateI + " " + inMonthI + " " + inYearI;
       reason.innerHTML = inReason;
       
-      ctx.fillStyle = "#fcfdff";
+      ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, 800, 900);
       ctx.drawImage(logo, 10, 20, 250, 130);
       ctx.fillStyle = "#000";
