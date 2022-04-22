@@ -18,6 +18,7 @@ function prev(){
 
 
       let inName = document.getElementById("inName").value;
+      let inSex = document.getElementById("inSex").value;
       let inPosition = document.getElementById("inPosition").value;
       let inDays = document.getElementById("inDays").value;
       let inDateF = document.getElementById("inDateF").value;
@@ -32,6 +33,7 @@ function prev(){
       let inReason = document.getElementById("inReason").value;
 
       const name = document.getElementById("name");
+      const sex = document.getElementById("sex");
       const position = document.getElementById("position");
       const days = document.getElementById("days");
       const datef = document.getElementById("datef");
@@ -40,6 +42,7 @@ function prev(){
       const reason = document.getElementById("reason");
 
       name.innerHTML = inName;
+      sex.innerHTML = inSex;
       position.innerHTML = inPosition;
       days.innerHTML =  inDays + " ថ្ងៃ";
       datef.innerHTML = inDateF + "." + inMonthF + "." + inYearF;
@@ -60,7 +63,7 @@ function prev(){
       ctx.fillStyle = "#000";
       ctx.font = '22pt Krasar'; //Arial
       ctx.fillStyle = "#ffffff";
-      ctx.fillText("ពាក្យស្នើសុំអនុញ្ញាឈប់សម្រាក", 200, 68);
+      ctx.fillText("ពាក្យស្នើសុំអនុញ្ញាតឈប់សម្រាក", 200, 68);
       ctx.font = '20pt Krasar'; //Arial
       ctx.fillStyle = "#000";
       ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
@@ -95,7 +98,21 @@ function prev(){
       ctx.fillStyle = "#000";
       ctx.fillText("សេចក្តីដូចបានជម្រាបខាងលើ", 200, 620);
       ctx.fillText("សូមលោកប្រធានមេត្តាអនុញ្ញាតដោយក្តីអនុគ្រោះ", 100, 670);
-      ctx.fillText("សូមលោកប្រធានទទួលការគោរពដ៏ខ្ពង់ខ្ពស់អំពីខ្ញុំបាទ/នាងខ្ញុំ។", 50, 720);    
+      ctx.fillText("សូមលោកប្រធានទទួលការគោរពដ៏ខ្ពង់ខ្ពស់អំពីខ្ញុំបាទ/នាងខ្ញុំ។", 50, 720); 
+      
+      var conSex = document.getElementById("inSex").value;
+      
+
+
+      if (conSex < 3) {      
+        ctx.fillRect(122, 142, 60, 2);
+        ctx.fillRect(582, 712, 60, 2);
+      } else {       
+        ctx.fillRect(50, 142, 60, 2);
+        ctx.fillRect(510, 712, 60, 2);
+      }
+
+
 }
 
 const download = document.getElementById("down");

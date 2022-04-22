@@ -14,8 +14,19 @@
     <form>
       <h3>Please fill-in the form</h3>
       <input type="text" id="inName"  placeholder="ឈ្មោះ">
-      <input type="text" id="inPosition" placeholder="តួនាទី">
-      <input type="text" id="inDays" placeholder="ចំនួនថ្ងៃឈប់សម្រាក">
+      <select style="width: 20%;float: left; margin-right: 1%;" id="inSex"   placeholder="ភេទ" required>
+        <option value= 2>ប្រុស</option>
+        <option value= 4>ស្រី</option>
+      </select>
+      <input style="width: 59%; "type="text" id="inPosition" placeholder="តួនាទី">
+
+      <!-- <select style="width: 40%;float: left; margin-right: 1%;" id="inBranch"  placeholder="សាខា" required>
+        <option value= 2>សាខា</option>
+        <option value= 4>ស្រី</option>
+      </select> -->
+ <input style="width: 80%; "type="text" id="inDays" placeholder="ចំនួនថ្ងៃឈប់សម្រាក">
+
+
       <label style="width: 100%; float: left; font-size: 12pt; color: #757575;">ចាប់ពីថ្ងៃទី</label>
       <select style="width: 20%; float: left; margin-right: 1%;" id="inDateF"   placeholder="ចាប់ពីថ្ងៃទី..." required>
         <option value="០១">០១</option>
@@ -219,6 +230,7 @@
           <img src="" id="imgDisplayed">
           <ul>
             <li id="name"></li>
+            <li id="sex"></li>
             <li id="position"></li>
             <li id="days"></li>
             <li id="datef"></li>
