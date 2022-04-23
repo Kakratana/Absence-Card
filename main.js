@@ -109,7 +109,7 @@ function prev(){
         ctx.fillRect(582, 712, 60, 2);
       } else {       
         ctx.fillRect(50, 142, 60, 2);
-        ctx.fillRect(510, 712, 60, 2);
+        ctx.fillRect(512, 712, 60, 2);
       }
 
 

@@ -15,7 +15,7 @@
       <h3>Please fill-in the form</h3>
       <input type="text" id="inName" lang="km" placeholder="ឈ្មោះ">
       <select style="width: 35%;float: left; margin-right: 1%;" id="inSex"  placeholder="ភេទ" required>
-        <!-- <option value="ភេទ" selected disabled hidden>ភេទ</option> -->
+        <option value="ភេទ" selected disabled hidden>ភេទ</option>
         <option value= 2>ប្រុស</option>
         <option value= 4>ស្រី</option>
       </select>
@@ -25,7 +25,12 @@
         <option value= 2>សាខា</option>
         <option value= 4>ស្រី</option>
       </select> -->
-      <input style="width: 95%; "  lang="km" type="text" id="inDays" placeholder="ចំនួនថ្ងៃឈប់សម្រាក">
+      <script>
+          function myFunction(x) {
+            document.getElementById("inDays").defaultValue = "០១";
+          }
+      </script>
+      <input style="width: 95%; "  lang="km" type="text" onfocus="myFunction(this)" id="inDays" value = "" placeholder="ចំនួនថ្ងៃឈប់សម្រាក">
 
 
       <!-- <label style="width: 100%; float: left; font-size: 12pt; color: #757575;">ចាប់ពីថ្ងៃទី</label> -->
