@@ -65,6 +65,10 @@ select {
 
 }
 
+input{
+  padding: 9px;
+}
+
 
 .styled-select select {
   -moz-appearance:none; /* Firefox */
@@ -81,7 +85,7 @@ input, select{
   font-size: 16px;
   border: 1px solid #a7a7a7;
   border-radius: 5px;
-  padding: 3px;
+  
   font-family: 'Krasar';
   height:40px;
 
