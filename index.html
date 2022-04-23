@@ -15,7 +15,7 @@
       <h3>Please fill-in the form</h3>
       <input type="text" id="inName" lang="km" placeholder="ឈ្មោះ">
       <select style="width: 35%;float: left; margin-right: 1%;" id="inSex"  placeholder="ភេទ" required>
-        <option value="ភេទ" selected disabled hidden>ភេទ</option>
+        <!-- <option value="ភេទ" selected disabled hidden>ភេទ</option> -->
         <option value= 2>ប្រុស</option>
         <option value= 4>ស្រី</option>
       </select>
@@ -64,21 +64,8 @@
         <option value="៣១">៣១</option>
       </select>
 
-      <select style="width: 23%; float: left; margin-right: 1%;" id="inMonthF"   placeholder="ខែ..." required>
-        <option value="ខែ" selected disabled hidden>ខែ</option>
-        <option value="មករា">មករា</option>
-        <option value="កុម្ភៈ">កុម្ភៈ</option>
-        <option value="មិនា">មិនា</option>
-        <option value="មេសា">មេសា</option>
-        <option value="ឧសភា">ឧសភា</option>
-        <option value="មិថុនា">មិថុនា</option>
-        <option value="កក្កដា">កក្កដា</option>
-        <option value="សីហា">សីហា</option>
-        <option value="កញ្ញា">កញ្ញា</option>
-        <option value="តុលា">តុលា</option>
-        <option value="វិច្ឆិកា">វិច្ឆិកា</option>
-        <option value="ឆ្នូ">ឆ្នូ</option>
-        </select>
+      <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthF"   value="" required>
+
 
         <select style="width: 25%; " id="inYearF"   placeholder="ឆ្នាំ..." required>
           <!-- <option value="ឆ្នាំ" selected disabled hidden>ឆ្នាំ</option> -->
@@ -126,21 +113,7 @@
             <option value="៣១">៣១</option>
           </select>
     
-          <select style="width: 23%; float: left; margin-right: 1%;" id="inMonthT"   placeholder="ខែ..." required>
-            <option value="ខែ" selected disabled hidden>ខែ</option>
-            <option value="មករា">មករា</option>
-            <option value="កុម្ភៈ">កុម្ភៈ</option>
-            <option value="មិនា">មិនា</option>
-            <option value="មេសា">មេសា</option>
-            <option value="ឧសភា">ឧសភា</option>
-            <option value="មិថុនា">មិថុនា</option>
-            <option value="កក្កដា">កក្កដា</option>
-            <option value="សីហា">សីហា</option>
-            <option value="កញ្ញា">កញ្ញា</option>
-            <option value="តុលា">តុលា</option>
-            <option value="វិច្ឆិកា">វិច្ឆិកា</option>
-            <option value="ឆ្នូ">ឆ្នូ</option>
-            </select>
+          <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthT"   value="" required>
     
             <select style="width: 25%; " id="inYearT"   placeholder="ឆ្នាំ..." required>
               <!-- <option value="ឆ្នាំ" selected disabled hidden>ឆ្នាំ</option> -->
@@ -188,21 +161,7 @@
             <option value="៣១">៣១</option>
           </select>
     
-          <select style="width: 23%; float: left; margin-right: 1%;" id="inMonthI"   placeholder="ខែ..." required>
-            <option value="ខែ" selected disabled hidden>ខែ</option>
-            <option value="មករា">មករា</option>
-            <option value="កុម្ភៈ">កុម្ភៈ</option>
-            <option value="មិនា">មិនា</option>
-            <option value="មេសា">មេសា</option>
-            <option value="ឧសភា">ឧសភា</option>
-            <option value="មិថុនា">មិថុនា</option>
-            <option value="កក្កដា">កក្កដា</option>
-            <option value="សីហា">សីហា</option>
-            <option value="កញ្ញា">កញ្ញា</option>
-            <option value="តុលា">តុលា</option>
-            <option value="វិច្ឆិកា">វិច្ឆិកា</option>
-            <option value="ឆ្នូ">ឆ្នូ</option>
-            </select>
+          <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthI"   value="" required>
     
             <select style="width: 25%; " id="inYearI"   placeholder="ឆ្នាំ..." required>
               <!-- <option value="ឆ្នាំ" selected disabled hidden>ឆ្នាំ</option> -->
@@ -260,64 +219,64 @@
       let month = d.getMonth();
         switch(month) {
         case 0:
-           document.getElementById("inMonthF").defaultValue = "មករា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "មករា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "មករា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "មករា";
+         document.getElementById("inMonthT").defaultValue = "មករា";
+         document.getElementById("inMonthI").defaultValue = "មករា";
           break;
         case 1:
-           document.getElementById("inMonthF").defaultValue = "កុម្ភៈ ២០២២";
-         document.getElementById("inMonthT").defaultValue = "កុម្ភៈ ២០២២";
-         document.getElementById("inMonthI").defaultValue = "កុម្ភៈ ២០២២";
+           document.getElementById("inMonthF").defaultValue = "កុម្ភៈ";
+         document.getElementById("inMonthT").defaultValue = "កុម្ភៈ";
+         document.getElementById("inMonthI").defaultValue = "កុម្ភៈ";
           break;
         case 2:
-           document.getElementById("inMonthF").defaultValue = "មីនា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "មីនា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "មីនា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "មីនា";
+         document.getElementById("inMonthT").defaultValue = "មីនា";
+         document.getElementById("inMonthI").defaultValue = "មីនា";
           break;
         case 3:
-           document.getElementById("inMonthF").defaultValue = "មេសា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "មេសា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "មេសា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "មេសា";
+         document.getElementById("inMonthT").defaultValue = "មេសា";
+         document.getElementById("inMonthI").defaultValue = "មេសា";
           break;
         case 4:
-           document.getElementById("inMonthF").defaultValue = "ឧសភា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "ឧសភា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "ឧសភា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "ឧសភា";
+         document.getElementById("inMonthT").defaultValue = "ឧសភា";
+         document.getElementById("inMonthI").defaultValue = "ឧសភា";
           break;
         case 5:
-           document.getElementById("inMonthF").defaultValue = "មិថុនា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "មិថុនា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "មិថុនា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "មិថុនា";
+         document.getElementById("inMonthT").defaultValue = "មិថុនា";
+         document.getElementById("inMonthI").defaultValue = "មិថុនា";
           break;
         case 6:
-           document.getElementById("inMonthF").defaultValue = "កក្កដា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "កក្កដា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "កក្កដា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "កក្កដា";
+         document.getElementById("inMonthT").defaultValue = "កក្កដា";
+         document.getElementById("inMonthI").defaultValue = "កក្កដា";
           break;
         case 7:
-           document.getElementById("inMonthF").defaultValue = "សីហា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "សីហា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "សីហា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "សីហា";
+         document.getElementById("inMonthT").defaultValue = "សីហា";
+         document.getElementById("inMonthI").defaultValue = "សីហា";
           break;
         case 8:
-           document.getElementById("inMonthF").defaultValue = "កញ្ញា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "កញ្ញា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "កញ្ញា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "កញ្ញា";
+         document.getElementById("inMonthT").defaultValue = "កញ្ញា";
+         document.getElementById("inMonthI").defaultValue = "កញ្ញា";
           break;
         case 9:
-           document.getElementById("fromtDate").defaultValue = "តុលា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "តុលា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "តុលា ២០២២";
+           document.getElementById("fromtDate").defaultValue = "តុលា";
+         document.getElementById("inMonthT").defaultValue = "តុលា";
+         document.getElementById("inMonthI").defaultValue = "តុលា";
           break;
         case 10:
-           document.getElementById("inMonthF").defaultValue = "វិច្ឆិកា ២០២២";
-         document.getElementById("inMonthT").defaultValue = "វិច្ឆិកា ២០២២";
-         document.getElementById("inMonthI").defaultValue = "វិច្ឆិកា ២០២២";
+           document.getElementById("inMonthF").defaultValue = "វិច្ឆិកា";
+         document.getElementById("inMonthT").defaultValue = "វិច្ឆិកា";
+         document.getElementById("inMonthI").defaultValue = "វិច្ឆិកា";
           break;
         default:
-           document.getElementById("fromtDate").defaultValue = "ធ្នូ ២០២២";
-         document.getElementById("inMonthT").defaultValue = "ធ្នូ ២០២២";
-         document.getElementById("inMonthI").defaultValue = "ធ្នូ ២០២២";
+           document.getElementById("fromtDate").defaultValue = "ធ្នូ";
+         document.getElementById("inMonthT").defaultValue = "ធ្នូ";
+         document.getElementById("inMonthI").defaultValue = "ធ្នូ";
       }
       });
       </script>
