@@ -65,6 +65,7 @@ select {
 
 
 input, select{
+  color:#000;
   display: table;
   margin-bottom: 1em;
   width: 95%;
