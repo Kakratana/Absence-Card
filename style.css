@@ -61,7 +61,10 @@ select {
   border:1px solid a7a7a7;
   /* vertical-align:top; */
   height:40px;
+  padding: 5px;
+
 }
+
 
 .styled-select select {
   -moz-appearance:none; /* Firefox */
@@ -78,7 +81,7 @@ input, select{
   font-size: 16px;
   border: 1px solid #a7a7a7;
   border-radius: 5px;
-  padding: 3px 5px;
+  padding: 3px;
   font-family: 'Krasar';
   height:40px;
 
@@ -86,9 +89,7 @@ input, select{
 -moz-box-sizing: border-box;
 -webkit-box-sizing: border-box;
 }
-option{
-  color:#757575;
-}
+
 
 #file{
   opacity: 0;
