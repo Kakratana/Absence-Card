@@ -4,6 +4,21 @@ body{
   padding: 0;
   overflow-x: hidden;
 }
+
+::placeholder {
+  color: #000000;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #000000;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #000000;
+}
+
+
 @font-face {
   font-family: 'Krasar';
   src: url("Krasar.woff") format('woff');
@@ -40,14 +55,16 @@ form{
 input, select{
   display: table;
   margin-bottom: 1em;
-  width: 80%;
+  width: 95%;
   font-size: 16px;
   border: 1px solid #a7a7a7;
   border-radius: 5px;
   padding: 3px;
   font-family: 'Krasar';
 }
-
+option{
+  color:#757575;
+}
 
 #file{
   opacity: 0;
