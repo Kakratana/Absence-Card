@@ -5,6 +5,10 @@ body{
   overflow-x: hidden;
 }
 
+input:focus::placeholder {
+  color: transparent;
+}
+
 ::placeholder {
   color: #000000;
   opacity: 1; /* Firefox */
@@ -52,6 +56,14 @@ form{
   background: #ffffff;
   display: none;
 }
+
+select {
+  border:1px solid a7a7a7;
+  /* vertical-align:top; */
+  height:40px;
+}
+
+
 input, select{
   display: table;
   margin-bottom: 1em;
@@ -59,8 +71,13 @@ input, select{
   font-size: 16px;
   border: 1px solid #a7a7a7;
   border-radius: 5px;
-  padding: 3px;
+  padding: 3px 5px;
   font-family: 'Krasar';
+  height:40px;
+
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
 }
 option{
   color:#757575;
