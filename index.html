@@ -166,7 +166,7 @@
             <option value="៣១">៣១</option>
           </select>
     
-          <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthI"   disabled value="" required>
+          <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthI"   value="" required>
     
             <select style="width: 25%; " id="inYearI"   placeholder="ឆ្នាំ..." required>
               <!-- <option value="ឆ្នាំ" selected disabled hidden>ឆ្នាំ</option> -->
@@ -269,7 +269,7 @@
          document.getElementById("inMonthI").defaultValue = "កញ្ញា";
           break;
         case 9:
-           document.getElementById("fromtDate").defaultValue = "តុលា";
+           document.getElementById("inMonthF").defaultValue = "តុលា";
          document.getElementById("inMonthT").defaultValue = "តុលា";
          document.getElementById("inMonthI").defaultValue = "តុលា";
           break;
@@ -278,20 +278,10 @@
          document.getElementById("inMonthT").defaultValue = "វិច្ឆិកា";
          document.getElementById("inMonthI").defaultValue = "វិច្ឆិកា";
           break;
-        case 11:
-         document.getElementById("fromtDate").defaultValue = "ធ្នូ";
-         document.getElementById("inMonthT").defaultValue = "ធ្នូ";
-         document.getElementById("inMonthI").defaultValue = "ធ្នូ";
-	break;
-        case 12:
-         document.getElementById("fromtDate").defaultValue = "ធ្នូ";
-         document.getElementById("inMonthT").defaultValue = "ធ្នូ";
-         document.getElementById("inMonthI").defaultValue = "ធ្នូ";
-	break;
         default:
-         document.getElementById("fromtDate").defaultValue = "ខែ";
-         document.getElementById("inMonthT").defaultValue = "ខែ";
-         document.getElementById("inMonthI").defaultValue = "ខែ";
+         document.getElementById("inMonthF").defaultValue = "ធ្នូ";
+         document.getElementById("inMonthT").defaultValue = "ធ្នូ";
+         document.getElementById("inMonthI").defaultValue = "ធ្នូ";
       }
       });
       </script>
