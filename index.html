@@ -120,7 +120,7 @@
     
           <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthT"   value="" required>
     
-            <select style="width: 25%; " id="inYearT"   disabled placeholder="ឆ្នាំ..." required>
+            <select style="width: 25%; " id="inYearT"   placeholder="ឆ្នាំ..." required>
               <!-- <option value="ឆ្នាំ" selected disabled hidden>ឆ្នាំ</option> -->
               <option value="២០២២">២០២២</option>
               <option value="២០២៣">២០២៣</option>
@@ -282,6 +282,11 @@
          document.getElementById("fromtDate").defaultValue = "ធ្នូ";
          document.getElementById("inMonthT").defaultValue = "ធ្នូ";
          document.getElementById("inMonthI").defaultValue = "ធ្នូ";
+	break;
+        default:
+         document.getElementById("fromtDate").defaultValue = "ខែ";
+         document.getElementById("inMonthT").defaultValue = "ខែ";
+         document.getElementById("inMonthI").defaultValue = "ខែ";
       }
       });
       </script>
