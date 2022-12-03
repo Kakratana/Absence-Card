@@ -69,10 +69,10 @@
         <option value="៣១">៣១</option>
       </select>
 
-      <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthF"   disabled value="" required>
+      <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthF"   value="" required>
 
 
-        <select style="width: 25%; " id="inYearF"   disabled placeholder="ឆ្នាំ..." required>
+        <select style="width: 25%; " id="inYearF"   placeholder="ឆ្នាំ..." required>
           <!-- <option value="ឆ្នាំ" selected disabled hidden>ឆ្នាំ</option> -->
 					<option value="២០២២">២០២២</option>
 					<option value="២០២៣">២០២៣</option>
@@ -118,7 +118,7 @@
             <option value="៣១">៣១</option>
           </select>
     
-          <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthT"   disabled value="" required>
+          <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthT"   value="" required>
     
             <select style="width: 25%; " id="inYearT"   disabled placeholder="ឆ្នាំ..." required>
               <!-- <option value="ឆ្នាំ" selected disabled hidden>ឆ្នាំ</option> -->
@@ -168,7 +168,7 @@
     
           <input type="text" style="width: 23%; float: left; margin-right: 1%;" id="inMonthI"   disabled value="" required>
     
-            <select style="width: 25%; " id="inYearI"   disabled placeholder="ឆ្នាំ..." required>
+            <select style="width: 25%; " id="inYearI"   placeholder="ឆ្នាំ..." required>
               <!-- <option value="ឆ្នាំ" selected disabled hidden>ឆ្នាំ</option> -->
               <option value="២០២២">២០២២</option>
               <option value="២០២៣">២០២៣</option>
@@ -278,8 +278,8 @@
          document.getElementById("inMonthT").defaultValue = "វិច្ឆិកា";
          document.getElementById("inMonthI").defaultValue = "វិច្ឆិកា";
           break;
-        default:
-           document.getElementById("fromtDate").defaultValue = "ធ្នូ";
+        case 11:
+         document.getElementById("fromtDate").defaultValue = "ធ្នូ";
          document.getElementById("inMonthT").defaultValue = "ធ្នូ";
          document.getElementById("inMonthI").defaultValue = "ធ្នូ";
       }
