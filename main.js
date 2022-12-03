@@ -4,12 +4,13 @@ preview.addEventListener("click", prev);
 
 // canvas.height = canvas.width / 1.616;
 const ctx = canvas.getContext("2d");
-ctx.font = "14px Krasar"; //Helvetica
+
 
 const image = document.getElementById("imgDisplayed");
 const logo = document.getElementById("logo");
 
 function prev(){
+	  ctx.font = "14px Krasar";
       var x = document.getElementById("form");
       x.style.display = "none";
 
@@ -103,7 +104,6 @@ function prev(){
       var conSex = document.getElementById("inSex").value;
       
 
-
       if (conSex < 3) {      
         ctx.fillRect(122, 142, 60, 2);
         ctx.fillRect(582, 712, 60, 2);
@@ -131,3 +131,5 @@ download.addEventListener("click", function(){
     document.body.removeChild(a);
   }
 });
+
+
