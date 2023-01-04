@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
-  <title>Absence Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Absence Form</title>
 </head>
 <body>
   
 
     <div class="back" id="form">
         <form>
-            <h3>Please fill-in the form</h3>
+            <h3><i class="fa fa-file-text-o" aria-hidden="true"></i> Leave of Absence Letter Form</h3>
             <input type="text" id="inName" lang="km" placeholder="ឈ្មោះ">
             <select style="width: 35%;float: left; margin-right: 1%;" id="inSex" placeholder="ភេទ" required>
                 <option value="ភេទ" selected disabled hidden>ភេទ</option>
@@ -185,7 +186,7 @@
 
         </form>
 
-        <button type="submit" id="preview">Preview</button>
+        <button type="submit" id="preview">Preview <i class="fa fa-eye" aria-hidden="true"></i></button>
 
         <div  hidden> 
             <ul>
@@ -206,8 +207,8 @@
 
     <div class="container" id="show">
         <canvas id="result" width="720" height="760"></canvas>
-        <button style="margin-right: auto; margin-left: auto;" id="down"> Download </button>&nbsp;
-        <button style="font-size: 18px; margin-right: auto; margin-left: auto;" onClick="onShares()">Share Image</button>
+        <button style="margin-right: auto; margin-left: auto;" id="down"> Download <i class="fa fa-download" aria-hidden="true"></i></button>&nbsp;
+        <button style="font-size: 18px; margin-right: auto; margin-left: auto;" onClick="onShares()">Share Image <i class="fa fa-share" aria-hidden="true"></i></button>
     </div>
 	
 
