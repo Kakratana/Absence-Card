@@ -68,9 +68,11 @@ function prev(){
       ctx.font = '20pt Krasar'; //Arial
       ctx.fillStyle = "#000";
       ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
-      ctx.fillStyle = "#1876f2";
-      ctx.fillText(name.innerHTML, 190, 150);
-      ctx.fillStyle = "#000";
+    ctx.fillStyle = "#1876f2";
+       ctx.textAlign = "center";
+      ctx.fillText(name.innerHTML, 280, 150);
+    ctx.fillStyle = "#000";
+    ctx.textAlign = "start";
       ctx.fillText("តួនាទី", 380, 150);
       ctx.fillStyle = "#1876f2";
       ctx.fillText(position.innerHTML, 450, 150);
@@ -131,5 +133,31 @@ download.addEventListener("click", function(){
     document.body.removeChild(a);
   }
 });
+
+
+
+async function onShares() {
+
+    const note = 'សូមគោរព  ជំរាបសួរលោកប្រធាន និងថ្នាក់ដឹកនាំក្រុមហ៊ុន។ ខ្ញុំបាទ/នាងខ្ញុំ  សុំអនុញ្ញាតច្បាប់សម្រាកដូចទម្រង់ខាងលើ សូមលោកប្រធាន និងថ្នាក់ដឹកនាំមេត្តាពិនិត្យឲ្យក្តីអនុគ្រោះ។';
+
+        const dataUrl = canvas.toDataURL();
+        const blob = await (await fetch(dataUrl)).blob(); 
+        const filesArray = [
+            new File(
+                [blob],
+                'Card.png',
+                {
+                    type: blob.type,
+                    lastModified: new Date().getTime()
+                }
+            )
+        ]; 
+    const shareData = {
+            text: note ,
+            files: filesArray
+        }; 
+        navigator.share(shareData);
+    }
+
 
 

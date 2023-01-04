@@ -18,7 +18,7 @@ input:focus::placeholder {
  color: #000000;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
+:-ms-input-placeholder { /* Microsoft Edge */
  color: #000000;
 }
 
@@ -58,7 +58,7 @@ form{
 }
 
 select {
-  border:1px solid a7a7a7;
+  border:1px solid #a7a7a7;
   /* vertical-align:top; */
   height:40px;
   padding: 5px;
@@ -101,14 +101,15 @@ input, select{
   height: 0.1px;
   position: absolute;
 }
-.upload, button{
-  color: #fff;
-  background: #1876f2;
-  padding: 10px;
-  border: 2px solid #1876f2;
-  border-radius: 5px;
-  cursor: pointer;
+.upload, button {
+    color: #fff;
+    background: #1876f2;
+    padding: 10px;
+    border: 2px solid #1876f2;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
 form span{
   font-size: 12px;
 }
@@ -118,6 +119,7 @@ form span{
   margin-left: 1.2em;
 
 }
+
 
 
 #result{
