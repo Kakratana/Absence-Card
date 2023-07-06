@@ -24,10 +24,11 @@ input:focus::placeholder {
 
 
 @font-face {
-  font-family: 'Krasar';
-  src: url("Krasar.woff") format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Krasar';
+    src: url("Krasar.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 label{
   font-family: 'Krasar';
