@@ -199,6 +199,10 @@ ul li{
     margin-left: 5%;
   }
 
+ .back {
+        margin-left: 0%;
+    }
+
   #result{
     margin-left: 0;
     margin-right: 5%;
