@@ -1,8 +1,9 @@
-body{
-  font: 20px Helvetica, Arial;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+body {
+    font: 20px Helvetica, Arial;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: #f8f9fa;
 }
 
 input:focus::placeholder {
@@ -53,7 +54,6 @@ form{
     margin-top: 1em;
     color: #000;
     text-align: center;
-    background: #ffffff;
     display: none;
     margin-left: 2%;
 }
@@ -117,14 +117,14 @@ form span{
 }
 
 
-#result{
-  position: relative;
-  width: 100%;
-  margin-left: 0%;
-  border: 2px solid #ddd;
-  border-radius: 12px;
-  margin-bottom: 1em;
-  background-color: #fff;
+#result {
+    position: relative;
+    width: 100%;
+    margin-left: 0%;
+    /*border: 2px solid #ddd;*/
+    border-radius: 10px;
+    margin-bottom: 1em;
+    background-color: #fff;
 }
 
 header{
