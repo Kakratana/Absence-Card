@@ -47,14 +47,15 @@ form{
   width: 40%;
 }
 
-.container{
-  width: 50%;
-  float: left;
-  margin-top: 1em;
-  color:#000;
-  text-align: center;
-  background: #ffffff;
-  display: none;
+.container {
+    width: 50%;
+    float: left;
+    margin-top: 1em;
+    color: #000;
+    text-align: center;
+    background: #ffffff;
+    display: none;
+    margin-left: 2%;
 }
 
 select {
