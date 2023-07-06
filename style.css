@@ -34,7 +34,7 @@ label{
   font-size: 18px;
 }
 h3{
-  color: #1876f2;
+  color: #0D55B5;
 }
 .card{
   background: #fff;
@@ -103,9 +103,9 @@ input, select{
 }
 .upload, button {
     color: #fff;
-    background: #1876f2;
+    background: #0D55B5;
     padding: 10px;
-    border: 2px solid #1876f2;
+    border: 2px solid #0D55B5;
     border-radius: 5px;
     cursor: pointer;
 }
