@@ -22,7 +22,6 @@ input:focus::placeholder {
  color: #000000;
 }
 
-
 @font-face {
     font-family: 'Krasar';
     src: url("Krasar.woff") format('woff');
@@ -46,8 +45,8 @@ h3{
 
 form{
   width: 40%;
-  /* float: left; */
 }
+
 .container{
   width: 50%;
   float: left;
@@ -60,16 +59,13 @@ form{
 
 select {
   border:1px solid #a7a7a7;
-  /* vertical-align:top; */
   height:40px;
   padding: 5px;
-
 }
 
 input{
   padding: 9px;
 }
-
 
 .styled-select select {
   -moz-appearance:none; /* Firefox */
@@ -86,15 +82,12 @@ input, select{
   font-size: 16px;
   border: 1px solid #a7a7a7;
   border-radius: 5px;
-  
   font-family: 'Krasar';
   height:40px;
-
   box-sizing: border-box;
 -moz-box-sizing: border-box;
 -webkit-box-sizing: border-box;
 }
-
 
 #file{
   opacity: 0;
@@ -102,6 +95,7 @@ input, select{
   height: 0.1px;
   position: absolute;
 }
+
 .upload, button {
     color: #fff;
     background: #0D55B5;
@@ -114,13 +108,12 @@ input, select{
 form span{
   font-size: 12px;
 }
+
 #preview{
   font-size: 16px;
   margin-top: 0em;
   margin-left: 1.2em;
-
 }
-
 
 
 #result{
@@ -132,42 +125,51 @@ form span{
   margin-bottom: 1em;
   background-color: #fff;
 }
+
 header{
   width: 100%;
   background: #159;
 
   border-radius: 12px 12px 0 0 ;
 }
+
 header::after{
   content: "";
   display: flex;
   clear: both;
 }
+
 .camp{
   width: 40%;
   float: left;
   color: #fff;
 }
+
 .camp h4{
   margin: 12px auto 0 7px;
 }
+
 .camp span{
   margin-left: 8px;
 }
+
 #logo{
   width: 150px;
   height: 80px;
   float: right;
 }
+
 Now we get into the content part
 .content{
   width: 80%;
 }
+
 .content::after{
   content: "";
   display: flex;
   clear: both;
 }
+
 .content img{
   float: left;
   width: 80px;
@@ -176,11 +178,13 @@ Now we get into the content part
   margin-top: 12px;
 
 }
+
 .content ul{
   width: 50%;
   float: left;
   padding-left: 15px;
 }
+
 ul li{
   list-style-type: none;
 }
@@ -188,18 +192,20 @@ ul li{
 #down{
   font-size: 18px;
 }
+
 @media only screen and (max-width:768px) {
   .container, form{
     width: 90%;
     margin-left: 5%;
   }
+
   #result{
     margin-left: 0;
     margin-right: 5%;
   }
+
   #down{
     margin-right: 2em;
     margin-bottom: 2em;
   }
-
 }

@@ -2,10 +2,7 @@ const canvas = document.getElementById("result");
 const preview = document.getElementById("preview");
 preview.addEventListener("click", prev);
 
-// canvas.height = canvas.width / 1.616;
 const ctx = canvas.getContext("2d");
-
-
 const image = document.getElementById("imgDisplayed");
 const logo = document.getElementById("logo");
 
@@ -16,7 +13,6 @@ function prev(){
 
       var xz = document.getElementById("show");
       xz.style.display = "block";
-
 
       let inName = document.getElementById("inName").value;
       let inSex = document.getElementById("inSex").value;
@@ -51,28 +47,25 @@ function prev(){
       datei.innerHTML = inDateI + "." + inMonthI + "." + inYearI;
       reason.innerHTML = inReason;
       
-      
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, 800, 900);
       ctx.fillStyle = "#0D55B5";
       ctx.fillRect(0, 0, 800, 100);
-      // ctx.fillStyle = "#f1f3f4";
-      // ctx.fillRect(0, 750, 800, 50);
       ctx.fillStyle = "#0D55B5";
       ctx.fillRect(200, 570, 300, 2);
       ctx.drawImage(logo, 25, 15, 140, 70);
       ctx.fillStyle = "#000";
-      ctx.font = '22pt Krasar'; //Arial
+      ctx.font = '22pt Krasar'; 
       ctx.fillStyle = "#ffffff";
       ctx.fillText("ពាក្យស្នើសុំអនុញ្ញាតឈប់សម្រាក", 200, 68);
-      ctx.font = '20pt Krasar'; //Arial
+      ctx.font = '20pt Krasar'; 
       ctx.fillStyle = "#000";
       ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
-    ctx.fillStyle = "#0D55B5";
-       ctx.textAlign = "center";
+      ctx.fillStyle = "#0D55B5";
+      ctx.textAlign = "center";
       ctx.fillText(name.innerHTML, 280, 150);
-    ctx.fillStyle = "#000";
-    ctx.textAlign = "start";
+      ctx.fillStyle = "#000";
+      ctx.textAlign = "start";
       ctx.fillText("តួនាទី", 380, 150);
       ctx.fillStyle = "#0D55B5";
       ctx.fillText(position.innerHTML, 450, 150);
@@ -105,7 +98,6 @@ function prev(){
       
       var conSex = document.getElementById("inSex").value;
       
-
       if (conSex < 3) {      
         ctx.fillRect(122, 142, 60, 2);
         ctx.fillRect(582, 712, 60, 2);
@@ -113,8 +105,6 @@ function prev(){
         ctx.fillRect(50, 142, 60, 2);
         ctx.fillRect(512, 712, 60, 2);
       }
-
-
 }
 
 const download = document.getElementById("down");
@@ -133,8 +123,6 @@ download.addEventListener("click", function(){
     document.body.removeChild(a);
   }
 });
-
-
 
 async function onShares() {
 
@@ -156,6 +144,3 @@ async function onShares() {
         }; 
         navigator.share(shareData);
     }
-
-
-
