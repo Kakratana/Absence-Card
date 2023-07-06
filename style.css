@@ -195,7 +195,7 @@ ul li{
 
 @media only screen and (max-width:768px) {
   .container, form{
-    width: 93%;
+    width: 90%;
     margin-left: 5%;
   }
 
