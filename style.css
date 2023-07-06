@@ -10,6 +10,12 @@ input:focus::placeholder {
   color: transparent;
 }
 
+.preferably-square {
+    width: 100%;
+    aspect-ratio: auto 1 / 1;
+
+}
+
 ::placeholder {
   color: #000000;
   opacity: 1; /* Firefox */
@@ -49,7 +55,7 @@ form{
 }
 
 .container {
-    width: 50%;
+    width: 20%;
     float: left;
     margin-top: 1em;
     color: #000;
@@ -119,12 +125,13 @@ form span{
 
 #result {
     position: relative;
-    width: 100%;
-    margin-left: 0%;
+    height: 95%;
     /*border: 2px solid #ddd;*/
     border-radius: 1000px;
-    margin-bottom: 1em;
+    box-shadow: 0 0 0 1px #0d55b5;
     background-color: #fff;
+    width: 95%;
+    aspect-ratio: auto 1 / 1;
 }
 
 header{
@@ -203,11 +210,6 @@ ul li{
  .back {
         margin-left: 0%;
     }
-
-  #result{
-    margin-left: 0;
-    margin-right: 5%;
-  }
 
   #down{
     margin-right: 2em;
