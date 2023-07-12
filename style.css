@@ -36,9 +36,9 @@ input:focus::placeholder {
     font-style: normal;
     font-display: swap;
 }
-label {
-    /*font-family: 'Krasar';*/
-    font-size: 18px;
+label{
+  font-family: 'Krasar';
+  font-size: 18px;
 }
 h4{
   color: #0D55B5;
@@ -80,20 +80,20 @@ input{
   appearance:none;
 }
 
-input, select {
-    color: #000;
-    background-color: #ffffff;
-    display: table;
-    margin-bottom: 1em;
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #a7a7a7;
-    border-radius: 5px;
-    /*font-family: 'Krasar';*/
-    height: 40px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+input, select{
+  color:#000;
+  background-color: #ffffff;
+  display: table;
+  margin-bottom: 1em;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #a7a7a7;
+  border-radius: 5px;
+  font-family: 'Krasar';
+  height:40px;
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
 }
 
 #file{
