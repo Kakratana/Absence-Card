@@ -36,9 +36,9 @@ input:focus::placeholder {
     font-style: normal;
     font-display: swap;
 }
-label{
-  font-family: 'Krasar';
-  font-size: 18px;
+label {
+    /*font-family: 'Krasar';*/
+    font-size: 18px;
 }
 h4{
   color: #0D55B5;
