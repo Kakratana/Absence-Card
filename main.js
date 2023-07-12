@@ -6,7 +6,13 @@ const ctx = canvas.getContext("2d");
 const image = document.getElementById("imgDisplayed");
 const logo = document.getElementById("logo");
 
-function prev(){
+function prev() {
+   
+        if (document.getElementById("inPosition").value.length == 0) {
+            alert("Insufficient input data!");
+            return false;
+        }
+        
 	  ctx.font = "14px Krasar";
       var x = document.getElementById("form");
       x.style.display = "none";
