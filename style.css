@@ -116,10 +116,9 @@ form span{
   font-size: 12px;
 }
 
-#preview{
-  font-size: 16px;
-  margin-top: 0em;
-  margin-left: 1.2em;
+#preview {
+    font-size: 16px;
+    margin-top: 0em;
 }
 
 
@@ -215,4 +214,11 @@ ul li{
     margin-right: 2em;
     margin-bottom: 2em;
   }
+
+    #preview {
+        font-size: 16px;
+        margin-top: 0em;
+        margin-left: 5%;
+    }
+
 }
