@@ -24,7 +24,13 @@
                     document.getElementById("inDays").defaultValue = "០១";
                 }
             </script>
-            <input lang="km" type="text" onfocus="myFunction(this)" id="inDays" value="" maxlength="5" placeholder="ចំនួនថ្ងៃឈប់សម្រាក">
+            <input style="width: 71%; float: left; margin-right: 2%; " lang="km" type="text" onfocus="myFunction(this)" id="inDays" value="" maxlength="5" placeholder="ចំនួនថ្ងៃឈប់សម្រាក">
+            
+            <select style="width: 27%;"  id="inTime" placeholder="ថ្ងៃ" required>
+                <option value="ថ្ងៃ" selected >ថ្ងៃ</option>
+                <option value="ព្រឹក">ព្រឹក</option>
+                <option value="ល្ងាច">ល្ងាច</option>
+            </select>
             <select style="width: 44%; float: left; margin-right: 2%;" id="inDateF" placeholder="ចាប់ពីថ្ងៃទី..." required>
                 <option value="ថ្ងៃទី" selected disabled hidden>ចាប់ពីថ្ងៃទី</option>
                 <option value="០១">០១</option>
@@ -168,6 +174,7 @@
                 <li id="datet"></li>
                 <li id="datei"></li>
                 <li id="reason"></li>
+                <li id="time"></li>
             </ul>
             <img src="./Sremeas-Logo.webp" id="logo">
         </div>

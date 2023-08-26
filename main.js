@@ -34,6 +34,7 @@ function prev() {
       let inMonthI = document.getElementById("inMonthI").value;
       let inYearI = document.getElementById("inYearI").value;
       let inReason = document.getElementById("inReason").value;
+      let inTime = document.getElementById("inTime").value;
 
       const name = document.getElementById("name");
       const sex = document.getElementById("sex");
@@ -43,18 +44,20 @@ function prev() {
       const datet = document.getElementById("datet");
       const datei = document.getElementById("datei");
       const reason = document.getElementById("reason");
+      const time = document.getElementById("time");
 
       name.innerHTML = inName;
       sex.innerHTML = inSex;
       position.innerHTML = inPosition;
-      days.innerHTML =  inDays + " ថ្ងៃ";
+      days.innerHTML =  inDays + " " + inTime;
       datef.innerHTML = inDateF + "." + inMonthF + "." + inYearF;
       datet.innerHTML = inDateT + "." + inMonthT + "." + inYearT;
       datei.innerHTML = inDateI + "." + inMonthI + "." + inYearI;
       reason.innerHTML = inReason;
+      time.innerHTML = inTime;
       
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, 800, 900);
+      // ctx.fillStyle = "#00ff00";
+      // ctx.fillRect(0, 0, 800, 900);
       ctx.fillStyle = "#0D55B5";
       ctx.fillRect(0, 0, 800, 100);
       ctx.fillStyle = "#0D55B5";
