@@ -150,7 +150,7 @@ async function onShares() {
                 }
             )
         ]; 
-    const textShow =   String('សូមគោរព  ជំរាបសួរលោកប្រធាន និងថ្នាក់ដឹកនាំ។ ' + mF + ' ' + inName + ' សុំអនុញ្ញាតច្បាប់សម្រាកដូចទម្រង់ខាងលើដោយក្តីអនុគ្រោះ។'); 
+    const textShow =   "Test"; 
     const shareData = {
         
         text:  textShow ,
