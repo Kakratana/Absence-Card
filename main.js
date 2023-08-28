@@ -107,12 +107,15 @@ function prev() {
       
       var conSex = document.getElementById("inSex").value;
       
+      const mF = "";
       if (conSex < 3) {      
         ctx.fillRect(122, 142, 60, 2);
         ctx.fillRect(582, 712, 60, 2);
+        mF = "ខ្ញុំបាទ"
       } else {       
         ctx.fillRect(50, 142, 60, 2);
         ctx.fillRect(512, 712, 60, 2);
+        mF = "នាង​ខ្ញុំ"
       }
 }
 
@@ -147,8 +150,10 @@ async function onShares() {
                 }
             )
         ]; 
+        const textShow = 'សូមគោរព  ជំរាបសួរលោកប្រធាន និងថ្នាក់ដឹកនាំ។ ' + mF + ' ' + inName + ' សុំអនុញ្ញាតច្បាប់សម្រាកដូចទម្រង់ខាងលើដោយក្តីអនុគ្រោះ។';
     const shareData = {
-        text: 'សូមគោរព  ជំរាបសួរលោកប្រធាន និងថ្នាក់ដឹកនាំ។ ខ្ញុំបាទ/នាងខ្ញុំ  សុំអនុញ្ញាតច្បាប់សម្រាកដូចទម្រង់ខាងលើ ដោយក្តីអនុគ្រោះ។' ,
+        
+        text: textShow ,
             files: filesArray
         }; 
         navigator.share(shareData);
