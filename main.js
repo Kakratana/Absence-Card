@@ -152,6 +152,7 @@ async function onShares() {
         ]; 
 
         var mFSex = document.getElementById("inSex").value;
+        var inputName = document.getElementById("inName").value;
         var mF = "";
         if (mFSex < 3) {      
           mF = "ខ្ញុំបាទ";
@@ -159,7 +160,7 @@ async function onShares() {
           mF = "នាង​ខ្ញុំ";
         } 
            
-        const textShow = String(mF);
+        const textShow = String('សូមគោរព  ជំរាបសួរលោកប្រធាន និងថ្នាក់ដឹកនាំ។ ' + mF + ' ' + inputName + ' សុំអនុញ្ញាតច្បាប់សម្រាកដូចទម្រង់ខាងលើដោយក្តីអនុគ្រោះ។');
 
     const shareData = {
         
