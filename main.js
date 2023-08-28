@@ -150,10 +150,11 @@ async function onShares() {
                 }
             )
         ]; 
-    const textShow =  document.getElementById("inSex").innerHTML = "Hello JavaScript version" + mF ; 
+    const textShow =  document.write("The value of const variable x = " + mF);
+    const textSS = String(textShow);
     const shareData = {
         
-        text:  textShow ,
+        text:  textSS ,
             files: filesArray
         }; 
         navigator.share(shareData);
