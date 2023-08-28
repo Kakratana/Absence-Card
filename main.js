@@ -150,8 +150,16 @@ async function onShares() {
                 }
             )
         ]; 
-        
-    const textShow = String(mF);
+     
+        var mF = "";
+        if (conSex < 3) {      
+          mF = "ខ្ញុំបាទ";
+        } else {       
+
+          mF = "នាង​ខ្ញុំ";
+        } 
+           
+        const textShow = String(mF);
 
     const shareData = {
         
