@@ -150,11 +150,10 @@ async function onShares() {
                 }
             )
         ]; 
-    const textShow =  document.write("The value of const variable x = " + mF);
-    const textSS = String(textShow);
+
     const shareData = {
         
-        text:  textSS ,
+        text: mF.value ,
             files: filesArray
         }; 
         navigator.share(shareData);
