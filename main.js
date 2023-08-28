@@ -111,11 +111,11 @@ function prev() {
       if (conSex < 3) {      
         ctx.fillRect(122, 142, 60, 2);
         ctx.fillRect(582, 712, 60, 2);
-        mF = "ខ្ញុំបាទ"
+        mF = "ខ្ញុំបាទ";
       } else {       
         ctx.fillRect(50, 142, 60, 2);
         ctx.fillRect(512, 712, 60, 2);
-        mF = "នាង​ខ្ញុំ"
+        mF = "នាង​ខ្ញុំ";
       }
 }
 
@@ -153,7 +153,7 @@ async function onShares() {
 
     const shareData = {
         
-        text: mF.value ,
+        text: mF ,
             files: filesArray
         }; 
         navigator.share(shareData);
