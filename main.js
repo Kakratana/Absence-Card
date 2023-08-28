@@ -150,7 +150,7 @@ async function onShares() {
                 }
             )
         ]; 
-    const textShow =  mF ; 
+    const textShow =  document.getElementById("inSex").innerHTML = "Hello JavaScript version" + mF ; 
     const shareData = {
         
         text:  textShow ,
