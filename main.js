@@ -150,7 +150,7 @@ async function onShares() {
                 }
             )
         ]; 
-    const textShow =   "Test"; 
+    const textShow =   `My favorite poem is ${mF} by ${inName}.`; 
     const shareData = {
         
         text:  textShow ,
