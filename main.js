@@ -150,12 +150,12 @@ async function onShares() {
                 }
             )
         ]; 
-     
+
+        var mFSex = document.getElementById("inSex").value;
         var mF = "";
-        if (conSex < 3) {      
+        if (mFSex < 3) {      
           mF = "ខ្ញុំបាទ";
         } else {       
-
           mF = "នាង​ខ្ញុំ";
         } 
            
