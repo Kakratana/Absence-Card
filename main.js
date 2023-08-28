@@ -150,10 +150,10 @@ async function onShares() {
                 }
             )
         ]; 
-        
+    const textShow =   String('សូមគោរព  ជំរាបសួរលោកប្រធាន និងថ្នាក់ដឹកនាំ។ ' + mF + ' ' + inName + ' សុំអនុញ្ញាតច្បាប់សម្រាកដូចទម្រង់ខាងលើដោយក្តីអនុគ្រោះ។'); 
     const shareData = {
         
-        text: 'សូមគោរព  ជំរាបសួរលោកប្រធាន និងថ្នាក់ដឹកនាំ។ ' + mF + ' ' + inName + ' សុំអនុញ្ញាតច្បាប់សម្រាកដូចទម្រង់ខាងលើដោយក្តីអនុគ្រោះ។' ,
+        text:  textShow ,
             files: filesArray
         }; 
         navigator.share(shareData);
