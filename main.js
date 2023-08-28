@@ -107,7 +107,7 @@ function prev() {
       
       var conSex = document.getElementById("inSex").value;
       
-      const mF = "";
+      var mF = "";
       if (conSex < 3) {      
         ctx.fillRect(122, 142, 60, 2);
         ctx.fillRect(582, 712, 60, 2);
@@ -150,10 +150,12 @@ async function onShares() {
                 }
             )
         ]; 
+        
+    const textShow = String(mF);
 
     const shareData = {
         
-        text: mF ,
+        text: textShow ,
             files: filesArray
         }; 
         navigator.share(shareData);
