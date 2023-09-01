@@ -56,8 +56,8 @@ function prev() {
       reason.innerHTML = inReason;
       time.innerHTML = inTime;
       
-      // ctx.fillStyle = "#00ff00";
-      // ctx.fillRect(0, 0, 800, 900);
+      ctx.fillStyle = "#00ff00";
+      ctx.fillRect(0, 0, 800, 900);
       ctx.fillStyle = "#0D55B5";
       ctx.fillRect(0, 0, 800, 100);
       ctx.fillStyle = "#0D55B5";
