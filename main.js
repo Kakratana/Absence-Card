@@ -9,7 +9,7 @@ const logo = document.getElementById("logo");
 function prev() {
    
         if (document.getElementById("inPosition").value.length == 0) {
-            alert("Insufficient input data!");
+            alert("Please input your position!");
             return false;
         }
         
