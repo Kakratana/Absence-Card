@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"​ content="Sremeas's simple form of leave of absence letter. This form was reated to generate the image of absence letter.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Absence Form</title>
+    <style>
+      /* Reset margin and padding */
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+      }
+  
+      /* Button styling */
+      .back-button {
+        position: fixed;
+        bottom: 20px; /* 20px from the bottom of the page */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust to perfect center */
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #bababa; /* Blue color */
+        color: rgb(0, 0, 0);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+  
+      /* Button hover effect */
+      .back-button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+    </style>
+</head>
+
+<script>
+    async function handleForm(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const formData = new FormData(event.target);
+
+      // Send form data using Fetch API
+      try {
+        const response = await fetch(event.target.action, {
+          method: event.target.method,
+          body: formData,
+        });
+
+        if (response.ok) {
+          // Handle success
+          console.log("Form submitted successfully!");
+          alert("Form submitted successfully!");
+        } else {
+          // Handle error
+          console.error("Error submitting form");
+          alert("Failed to submit the form.");
+        }
+      } catch (error) {
+        console.error("Network error:", error);
+        // alert("An error occurred. Please try again.");
+      }
+    }
+  </script>
+
+<body>
+    <div class="back" id="form">
+        <form onsubmit="handleForm(event)" action="https://docs.google.com/forms/d/e/1FAIpQLSevkTqDT9Fv8-bZbUSTvxbJqR5RB_siYvk2PIZFBbN5GJeEZw/formResponse" method="POST">
+            <h4><center>Leave of Absence Letter</center></h4>
+            <input  name="entry.384490164" type="text" id="inName" lang="km" placeholder="ឈ្មោះ">
+            <select style="width: 39%;float: left; margin-right: 2%;" id="inSex" placeholder="ភេទ" required>
+                <option value="ភេទ" selected disabled hidden>ភេទ</option>
+                <option value=2>ប្រុស</option>
+                <option value=4>ស្រី</option>
+            </select>
+            <input style="width: 59%;" lang="km" type="text" id="inPosition" placeholder="តួនាទី" required>
+            <script>
+                function myFunction(x) {
+                    document.getElementById("inDays").defaultValue = 1;
+                }
+            </script>
+            <label  style="width: 39%;float: left; margin-right: 2%;" for="inDateF">ចំនួនថ្ងៃឈប់</label>            
+            <!-- <input name="entry.1197682587" style="width: 59%" lang="km" type="text" onfocus="myFunction(this)" id="inDays" value="" maxlength="5" placeholder=""> -->
+
+            <select name="entry.1197682587" style="width: 59%" lang="km" type="text" onfocus="myFunction(this)" id="inDays" value="" maxlength="5" placeholder="">
+                <option value="" selected disabled hidden>Select a number</option>
+                <!-- Options for 1 to 7 -->
+                <script>
+                const select = document.getElementById('inDays');
+                for (let i = 1; i <= 7; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    select.appendChild(option);
+                }
+                </script>
+                <!-- Option for 0.5 -->
+                <option value="0.5">0.5</option>
+              </select>
+
+
+            <label  style="width: 39%;float: left; margin-right: 2%;" for="inDateF">ចាប់ពីថ្ងៃទី</label>
+            <input name="entry.173238631" style="width: 59%" type="date" id="inDateF">
+
+          
+            <label  style="width: 39%;float: left; margin-right: 2%;" for="inDateT">ដល់ថ្ងៃទី</label>
+            <input name="entry.497671739" style="width: 59%" type="date" id="inDateT">
+
+          
+            <label  style="width: 39%;float: left; margin-right: 2%;" for="inDateI">ចូលធ្វើការវិញថ្ងៃទី</label>
+            <input name="entry.877231613" style="width: 59%" type="date" id="inDateI">
+
+
+            <input name="entry.2040428057" type="text" lang="km" id="inReason" placeholder="មូលហេតុ...">
+            <button style="width: 100%; margin: auto;" type="submit" id="preview" onclick="convertToKhmer()"><b>Preview</b></button>
+        </form>
+
+
+        <div  hidden> 
+            <ul>
+                <li id="name"></li>
+                <li id="sex"></li>
+                <li id="position"></li>
+                <li id="days"></li>
+                <li id="datef"></li>
+                <li id="datet"></li>
+                <li id="datei"></li>
+                <li id="reason"></li>
+                <li id="time"></li>
+                <li id="KHinDateF"></li>
+                <li id="KHinDateT"></li>
+                <li id="KHinDateI"></li>
+                <li id="KHinDays"></li>
+            </ul>
+            <img src="./Sremeas-Logo.webp" id="logo">
+        </div>
+    </div>
+    
+    <div class="container" id="show">
+        <div class="preferably-square">
+            <canvas id="result" width="720px" height="760px"></canvas>
+        </div>
+        <button style="font-size: 16px; margin-right: auto; margin-left: auto;" id="down"><b>Download</b></button>&nbsp;
+        <button style="font-size: 16px; margin-right: auto; margin-left: auto;" onClick="onShares()"><b>Share Image</b></button>
+    </div>
+	
+    <script>
+  window.addEventListener("load", function() {
+    const months = ["មករា", "កុម្ភៈ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"];
+    const currentMonth = months[new Date().getMonth()];
+    ["inMonthF", "inMonthT", "inMonthI"].forEach(id => {
+      document.getElementById(id).defaultValue = currentMonth;
+    });
+  });
+
+  document.getElementById("inSex").addEventListener("change", function() {
+    this.className = this.options[this.selectedIndex].className;
+  });
+</script>
+
+<script>
+    const khmerMonths = [
+      "មករា", "កុម្ភៈ", "មីនា", "មេសា",
+      "ឧសភា", "មិថុនា", "កក្កដា", "សីហា",
+      "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"
+    ];
+
+    document.getElementById('inDateF').addEventListener('change', function () {
+      const date = new Date(this.value);
+      if (!isNaN(date)) {
+        const day = date.getDate().toString().replace(/\d/g, d => String.fromCharCode(6112 + parseInt(d))); 
+        const month = khmerMonths[date.getMonth()];
+        const year = date.getFullYear().toString().replace(/\d/g, d => String.fromCharCode(6112 + parseInt(d))); // Convert to Khmer digits
+        document.getElementById('KHinDateF').textContent = `${day}.${month}.${year}`;
+      } else {
+        document.getElementById('KHinDateF').textContent = "";
+      }
+    });
+
+    document.getElementById('inDateT').addEventListener('change', function () {
+      const date = new Date(this.value);
+      if (!isNaN(date)) {
+        const day = date.getDate().toString().replace(/\d/g, d => String.fromCharCode(6112 + parseInt(d))); 
+        const month = khmerMonths[date.getMonth()];
+        const year = date.getFullYear().toString().replace(/\d/g, d => String.fromCharCode(6112 + parseInt(d))); // Convert to Khmer digits
+        document.getElementById('KHinDateT').textContent = `${day}.${month}.${year}`;
+      } else {
+        document.getElementById('KHinDateT').textContent = "";
+      }
+    });
+
+    document.getElementById('inDateI').addEventListener('change', function () {
+      const date = new Date(this.value);
+      if (!isNaN(date)) {
+        const day = date.getDate().toString().replace(/\d/g, d => String.fromCharCode(6112 + parseInt(d))); 
+        const month = khmerMonths[date.getMonth()];
+        const year = date.getFullYear().toString().replace(/\d/g, d => String.fromCharCode(6112 + parseInt(d))); // Convert to Khmer digits
+        document.getElementById('KHinDateI').textContent = `${day}.${month}.${year}`;
+      } else {
+        document.getElementById('KHinDateI').textContent = "";
+      }
+    });
+
+  </script>
+
+<script>
+  function convertToKhmer() {
+    const khmerNumbers = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
+    const khmerDecimal = '.'; // Khmer decimal point
+    
+    let inputValue = document.getElementById('inDays').value;
+    let integerPart = Math.floor(inputValue); // Get the integer part
+    let decimalPart = inputValue.split('.')[1] || ''; // Get the decimal part (if any)
+    
+    let khmerValue = '';
+
+    // Convert the integer part to Khmer numbers
+    for (let i = 0; i < integerPart.toString().length; i++) {
+      const digit = integerPart.toString()[i];
+      khmerValue += khmerNumbers[parseInt(digit)];
+    }
+
+    // Add the decimal point if there's a decimal part
+    if (decimalPart) {
+      khmerValue += khmerDecimal;
+
+      // Convert the decimal part to Khmer numbers
+      for (let i = 0; i < decimalPart.length; i++) {
+        const digit = decimalPart[i];
+        khmerValue += khmerNumbers[parseInt(digit)];
+      }
+    }
+
+    // Display the Khmer number
+    document.getElementById('KHinDays').innerText = khmerValue;
+  }
+</script>
+
+  <a href="index.html">
+<button class="back-button" >Home Manu</button></a>
+
+  <script src="main.js"></script>
+</body >
+</html >

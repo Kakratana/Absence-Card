@@ -20,7 +20,7 @@ function prev() {
       let inName = document.getElementById("inName").value;
       let inSex = document.getElementById("inSex").value;
       let inPosition = document.getElementById("inPosition").value;
-      let inDays = document.getElementById("KHinDays").textContent;
+      let inDays = document.getElementById("inDays").value;
       
       let inDateF = document.getElementById("KHinDateF").textContent;
       let inDateT = document.getElementById("KHinDateT").textContent;
@@ -52,7 +52,7 @@ function prev() {
       
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, 800, 900);
-      ctx.fillStyle = "#0D55B5";
+      ctx.fillStyle = "#28a745";
       ctx.fillRect(0, 0, 800, 100);
       ctx.fillStyle = "#0D55B5";
       ctx.fillRect(200, 570, 300, 2);

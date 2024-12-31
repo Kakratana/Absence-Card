@@ -1,265 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"​ content="Sremeas's simple form of leave of absence letter. This form was reated to generate the image of absence letter.">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>Absence Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Buttons with Links</title>
+  <style>
+    /* Reset margin and padding */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Container for vertical and horizontal centering */
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 50%;
+    }
+
+    /* The instruction text styling */
+    .instruction {
+      font-size: 18px;
+      margin-bottom: 20px; /* Space between instruction and buttons */
+    }
+
+    /* The button container styling */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      position: absolute;
+      top: 40%; /* Position buttons at 1/3 of the page height */
+    }
+
+    /* Button styling */
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Leave button styling */
+    .leave-button {
+      background-color: #0d55b5; /* Green for Leave */
+      color: white;
+    }
+
+    /* Day Off button styling */
+    .dayoff-button {
+      background-color: #28a745; /* Yellow for Day Off */
+      color: white;
+    }
+
+    /* Button hover effect */
+    button:hover {
+      opacity: 0.8;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .instruction {
+        font-size: 16px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="back" id="form">
-        <form>
-            <h4>Leave of Absence Letter</h4>
-            <input type="text" id="inName" lang="km" placeholder="ឈ្មោះ">
-            <select style="width: 39%;float: left; margin-right: 2%;" id="inSex" placeholder="ភេទ" required>
-                <option value="ភេទ" selected disabled hidden>ភេទ</option>
-                <option value=2>ប្រុស</option>
-                <option value=4>ស្រី</option>
-            </select>
-            <input style="width: 59%; " lang="km" type="text" id="inPosition" placeholder="តួនាទី" required>
-            <script>
-                function myFunction(x) {
-                    document.getElementById("inDays").defaultValue = "០១";
-                }
-            </script>
-            <input style="width: 71%; float: left; margin-right: 2%; " lang="km" type="text" onfocus="myFunction(this)" id="inDays" value="" maxlength="5" placeholder="ចំនួនថ្ងៃឈប់សម្រាក">
-            
-            <select style="width: 27%;"  id="inTime" placeholder="ថ្ងៃ" required>
-                <option value="ថ្ងៃ" selected >ថ្ងៃ</option>
-                <option value="ព្រឹក">ព្រឹក</option>
-                <option value="ល្ងាច">ល្ងាច</option>
-            </select>
-            <select style="width: 44%; float: left; margin-right: 2%;" id="inDateF" placeholder="ចាប់ពីថ្ងៃទី..." required>
-                <option value="ថ្ងៃទី" selected disabled hidden>ចាប់ពីថ្ងៃទី</option>
-                <option value="០១">០១</option>
-                <option value="០២">០២</option>
-                <option value="០៣">០៣</option>
-                <option value="០៤">០៤</option>
-                <option value="០៥">០៥</option>
-                <option value="០៦">០៦</option>
-                <option value="០៧">០៧</option>
-                <option value="០៨">០៨</option>
-                <option value="០៩">០៩</option>
-                <option value="១០">១០</option>
-                <option value="១១">១១</option>
-                <option value="១២">១២</option>
-                <option value="១៣">១៣</option>
-                <option value="១៤">១៤</option>
-                <option value="១៥">១៥</option>
-                <option value="១៦">១៦</option>
-                <option value="១៧">១៧</option>
-                <option value="១៨">១៨</option>
-                <option value="១៩">១៩</option>
-                <option value="២០">២០</option>
-                <option value="២១">២១</option>
-                <option value="២២">២២</option>
-                <option value="២៣">២៣</option>
-                <option value="២៤">២៤</option>
-                <option value="២៥">២៥</option>
-                <option value="២៦">២៦</option>
-                <option value="២៧">២៧</option>
-                <option value="២៨">២៨</option>
-                <option value="២៩">២៩</option>
-                <option value="៣០">៣០</option>
-                <option value="៣១">៣១</option>
-            </select>
-            <input type="text" style="width: 25%; float: left; margin-right: 2%;" aria-label="inMonthF" id="inMonthF" value="" required>
-            <select style="width: 27%; " id="inYearF" placeholder="ឆ្នាំ..." required>
-                <option value="២០២៤">២០២៤</option>
-                <option value="២០២៥">២០២៥</option>
-                <option value="២០២៦">២០២៦</option>
-                <option value="២០២៧">២០២៧</option>
-                <option value="២០២៨">២០២៨</option>
-            </select>
-            <select style="width: 44%; float: left; margin-right: 2%;" id="inDateT" placeholder="ចាប់ពីថ្ងៃទី..." required>
-                <option value="ថ្ងៃទី" selected disabled hidden>ដល់ថ្ងៃទី</option>
-                <option value="០១">០១</option>
-                <option value="០២">០២</option>
-                <option value="០៣">០៣</option>
-                <option value="០៤">០៤</option>
-                <option value="០៥">០៥</option>
-                <option value="០៦">០៦</option>
-                <option value="០៧">០៧</option>
-                <option value="០៨">០៨</option>
-                <option value="០៩">០៩</option>
-                <option value="១០">១០</option>
-                <option value="១១">១១</option>
-                <option value="១២">១២</option>
-                <option value="១៣">១៣</option>
-                <option value="១៤">១៤</option>
-                <option value="១៥">១៥</option>
-                <option value="១៦">១៦</option>
-                <option value="១៧">១៧</option>
-                <option value="១៨">១៨</option>
-                <option value="១៩">១៩</option>
-                <option value="២០">២០</option>
-                <option value="២១">២១</option>
-                <option value="២២">២២</option>
-                <option value="២៣">២៣</option>
-                <option value="២៤">២៤</option>
-                <option value="២៥">២៥</option>
-                <option value="២៦">២៦</option>
-                <option value="២៧">២៧</option>
-                <option value="២៨">២៨</option>
-                <option value="២៩">២៩</option>
-                <option value="៣០">៣០</option>
-                <option value="៣១">៣១</option>
-            </select>
-            <input type="text" style="width: 25%; float: left; margin-right: 2%;" aria-label="inMonthT" id="inMonthT" value="" required>
-            <select style="width: 27%; " id="inYearT" placeholder="ឆ្នាំ..." required>
-                <option value="២០២៤">២០២៤</option>
-                <option value="២០២៥">២០២៥</option>
-                <option value="២០២៦">២០២៦</option>
-                <option value="២០២៧">២០២៧</option>
-                <option value="២០២៨">២០២៨</option>
-            </select>
-            <select style="width: 44%; float: left; margin-right: 2%;" id="inDateI" placeholder="ចាប់ពីថ្ងៃទី..." required>
-                <option value="ថ្ងៃទី" selected disabled hidden>ចូលធ្វើការវិញថ្ងៃទី</option>
-                <option value="០១">០១</option>
-                <option value="០២">០២</option>
-                <option value="០៣">០៣</option>
-                <option value="០៤">០៤</option>
-                <option value="០៥">០៥</option>
-                <option value="០៦">០៦</option>
-                <option value="០៧">០៧</option>
-                <option value="០៨">០៨</option>
-                <option value="០៩">០៩</option>
-                <option value="១០">១០</option>
-                <option value="១១">១១</option>
-                <option value="១២">១២</option>
-                <option value="១៣">១៣</option>
-                <option value="១៤">១៤</option>
-                <option value="១៥">១៥</option>
-                <option value="១៦">១៦</option>
-                <option value="១៧">១៧</option>
-                <option value="១៨">១៨</option>
-                <option value="១៩">១៩</option>
-                <option value="២០">២០</option>
-                <option value="២១">២១</option>
-                <option value="២២">២២</option>
-                <option value="២៣">២៣</option>
-                <option value="២៤">២៤</option>
-                <option value="២៥">២៥</option>
-                <option value="២៦">២៦</option>
-                <option value="២៧">២៧</option>
-                <option value="២៨">២៨</option>
-                <option value="២៩">២៩</option>
-                <option value="៣០">៣០</option>
-                <option value="៣១">៣១</option>
-            </select>
-            <input type="text" style="width: 25%; float: left; margin-right: 2%;" aria-label="inMonthI" id="inMonthI" value="" required>
-            <select style="width: 27%; " id="inYearI" placeholder="ឆ្នាំ..." required>
-                <option value="២០២៤">២០២៤</option>
-                <option value="២០២៥">២០២៥</option>
-                <option value="២០២៦">២០២៦</option>
-                <option value="២០២៧">២០២៧</option>
-                <option value="២០២៨">២០២៨</option>
-            </select>
-            <input type="text" lang="km" id="inReason" placeholder="មូលហេតុ...">
-        </form>
-        <button id="preview"><b>Preview</b></button>
+  <div class="container">
+    <div class="instruction">
+       <center> <img style="margin: auto;"; src="./Sremeas-Logo.webp" id="logo">
+      <h3>Absence Form Generator</h3>
+      <p>Please select one of the following options.</p></center>
+    </div>
 
-        <div  hidden> 
-            <ul>
-                <li id="name"></li>
-                <li id="sex"></li>
-                <li id="position"></li>
-                <li id="days"></li>
-                <li id="datef"></li>
-                <li id="datet"></li>
-                <li id="datei"></li>
-                <li id="reason"></li>
-                <li id="time"></li>
-            </ul>
-            <img src="./Sremeas-Logo.webp" id="logo">
-        </div>
+    <div class="button-container">
+      <a href="leave.html"><button class="leave-button">Leave</button></a>
+      <a href="day-off.html"><button class="dayoff-button">Day Off</button></a>
     </div>
-    
-    <div class="container" id="show">
-        <div class="preferably-square">
-            <canvas id="result" width="720px" height="760px"></canvas>
-        </div>
-        <button style="margin-right: auto; margin-left: auto;" id="down"><b>Download</b></button>&nbsp;
-        <button style="font-size: 18px; margin-right: auto; margin-left: auto;" onClick="onShares()"><b>Share Image</b></button>
-    </div>
-	
-    <script>
-      window.addEventListener("load", function(){
-      const d = new Date();
-      let month = d.getMonth();
-        switch(month) {
-        case 0:
-         document.getElementById("inMonthF").defaultValue = "មករា";
-         document.getElementById("inMonthT").defaultValue = "មករា";
-         document.getElementById("inMonthI").defaultValue = "មករា";
-         break;
-        case 1:
-         document.getElementById("inMonthF").defaultValue = "កុម្ភៈ";
-         document.getElementById("inMonthT").defaultValue = "កុម្ភៈ";
-         document.getElementById("inMonthI").defaultValue = "កុម្ភៈ";
-         break;
-        case 2:
-         document.getElementById("inMonthF").defaultValue = "មីនា";
-         document.getElementById("inMonthT").defaultValue = "មីនា";
-         document.getElementById("inMonthI").defaultValue = "មីនា";
-         break;
-        case 3:
-         document.getElementById("inMonthF").defaultValue = "មេសា";
-         document.getElementById("inMonthT").defaultValue = "មេសា";
-         document.getElementById("inMonthI").defaultValue = "មេសា";
-         break;
-        case 4:
-         document.getElementById("inMonthF").defaultValue = "ឧសភា";
-         document.getElementById("inMonthT").defaultValue = "ឧសភា";
-         document.getElementById("inMonthI").defaultValue = "ឧសភា";
-         break;
-        case 5:
-         document.getElementById("inMonthF").defaultValue = "មិថុនា";
-         document.getElementById("inMonthT").defaultValue = "មិថុនា";
-         document.getElementById("inMonthI").defaultValue = "មិថុនា";
-         break;
-        case 6:
-         document.getElementById("inMonthF").defaultValue = "កក្កដា";
-         document.getElementById("inMonthT").defaultValue = "កក្កដា";
-         document.getElementById("inMonthI").defaultValue = "កក្កដា";
-         break;
-        case 7:
-         document.getElementById("inMonthF").defaultValue = "សីហា";
-         document.getElementById("inMonthT").defaultValue = "សីហា";
-         document.getElementById("inMonthI").defaultValue = "សីហា";
-         break;
-        case 8:
-         document.getElementById("inMonthF").defaultValue = "កញ្ញា";
-         document.getElementById("inMonthT").defaultValue = "កញ្ញា";
-         document.getElementById("inMonthI").defaultValue = "កញ្ញា";
-         break;
-        case 9:
-         document.getElementById("inMonthF").defaultValue = "តុលា";
-         document.getElementById("inMonthT").defaultValue = "តុលា";
-         document.getElementById("inMonthI").defaultValue = "តុលា";
-         break;
-        case 10:
-         document.getElementById("inMonthF").defaultValue = "វិច្ឆិកា";
-         document.getElementById("inMonthT").defaultValue = "វិច្ឆិកា";
-         document.getElementById("inMonthI").defaultValue = "វិច្ឆិកា";
-         break;
-        default:
-         document.getElementById("inMonthF").defaultValue = "ធ្នូ";
-         document.getElementById("inMonthT").defaultValue = "ធ្នូ";
-         document.getElementById("inMonthI").defaultValue = "ធ្នូ";
-      }
-      });
-      </script>
-	  
-      <script>
-        var inSex = document.getElementById('inSex');
-        inSex.onchange = function () {
-        inSex.className = this.options[this.selectedIndex].className;
-        }
-      </script>
-	  
-  <script src="main.js"></script>
-</body >
-</html >
+  </div>
+</body>
+</html>
