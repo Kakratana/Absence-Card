@@ -9,7 +9,32 @@ const logo = document.getElementById("logo");
 
 
 function prev() {
-         
+
+          // Map of IDs to custom names for the alert
+          const fields = {
+            inName: "ឈ្មោះ",
+            inSex: "ភេទ",
+            inPosition: "តួនាទី",
+            inDays: "ចំនួនឈប់",
+            inDateF: "ថ្ងៃចាប់ផ្តើម",
+            inDateT: "ថ្ងៃបញ្ចប់",
+            inDateI: "ថ្ងៃចូល​ធ្វើការវិញ",
+            inReason: "មូលហេតុ"            
+          };
+      
+          for (const [id, name] of Object.entries(fields)) {
+            const element = document.getElementById(id);
+            if (element && element.value.length === 0) {
+              // Show alert with custom name
+              alert(`សូម​បញ្ចូល "${name}" !`);
+              return; // Stop checking further after first empty field
+            }
+          }
+      
+          // If all fields are filled
+          // alert("All fields are filled!");
+     
+        
 	  ctx.font = "14px Krasar";
       var x = document.getElementById("form");
       x.style.display = "none";
@@ -20,7 +45,7 @@ function prev() {
       let inName = document.getElementById("inName").value;
       let inSex = document.getElementById("inSex").value;
       let inPosition = document.getElementById("inPosition").value;
-      let inDays = document.getElementById("inDays").value;
+      let inDays = document.getElementById("KHinDays").textContent;
       
       let inDateF = document.getElementById("KHinDateF").textContent;
       let inDateT = document.getElementById("KHinDateT").textContent;

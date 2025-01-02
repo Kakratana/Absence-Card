@@ -9,6 +9,30 @@ const logo = document.getElementById("logo");
 
 
 function prev() {
+
+            // Map of IDs to custom names for the alert
+            const fields = {
+              inName: "ឈ្មោះ",
+              inSex: "ភេទ",
+              inPosition: "តួនាទី",
+              inDays: "ចំនួនឈប់",
+              inDateF: "ថ្ងៃចាប់ផ្តើម",
+              inDateT: "ថ្ងៃបញ្ចប់",
+              inDateI: "ថ្ងៃចូល​ធ្វើការវិញ",
+              inReason: "មូលហេតុ"            
+            };
+        
+            for (const [id, name] of Object.entries(fields)) {
+              const element = document.getElementById(id);
+              if (element && element.value.length === 0) {
+                // Show alert with custom name
+                alert(`សូម​បញ្ចូល "${name}" !`);
+                return; // Stop checking further after first empty field
+              }
+            }
+        
+            // If all fields are filled
+            // alert("All fields are filled!");
          
 	  ctx.font = "14px Krasar";
       var x = document.getElementById("form");
