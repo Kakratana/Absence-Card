@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="Absence form generator for Sremeas.">
   <title>Absence Form Generator</title>
   
@@ -14,9 +14,10 @@
     /* -------------------------------------------
        GLOBAL & CANVAS STYLES
        ------------------------------------------- */
-    body { 
+    body, html { 
         font-family: 'Inter', sans-serif; 
-        background-color: #f8fafc; /* slate-50 */
+        background-color: #f8fafc; 
+        overflow-x: hidden; /* Prevent horizontal scroll on mobile */
     }
     
     @keyframes fadeUp {
@@ -33,11 +34,34 @@
         font-display: swap;
     }
 
-    /* Keep the native dropdown arrow for select elements */
+    /* Force native dropdown arrows but clear other OS styling */
     select {
         -webkit-appearance: menulist !important;
         -moz-appearance: menulist !important;
         appearance: menulist !important;
+    }
+
+    /* Deeply target iOS Date input shadow-DOM to force perfect vertical/horizontal centering */
+    input[type="date"] {
+        text-align: center;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    input[type="date"]::-webkit-datetime-edit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
     }
 
     /* Canvas styling */
@@ -46,6 +70,22 @@
         max-width: 720px;
         height: auto;
         aspect-ratio: 720 / 760;
+    }
+
+    /* The Anti-Screenshot Lens Effect */
+    .blur-lens-overlay {
+        position: absolute;
+        inset: 0;
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        /* Circle radius is set dynamically to closest-side and placed dead center.
+           The transparent area stops at 85% of the container's half-width.
+        */
+        -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, transparent 85%, black 110%);
+        mask-image: radial-gradient(circle closest-side at 50% 50%, transparent 85%, black 110%);
+        pointer-events: none;
+        z-index: 10;
+        background-color: rgba(255, 255, 255, 0.15);
     }
   </style>
 </head>
@@ -94,10 +134,10 @@
   <!-- ==========================================
        2. APP INTERFACE (Header + Form/Preview)
        ========================================== -->
-  <div id="appInterface" class="hidden flex-col flex-1 pb-12">
+  <div id="appInterface" class="hidden flex-col flex-1 pb-12 w-full overflow-hidden">
     
     <!-- Modern Sticky Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm w-full">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <button onclick="goHome()" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-medium transition-colors focus:outline-none rounded-lg py-2 px-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -121,26 +161,26 @@
     <img src="./Sremeas-Logo.webp" id="logo" style="display:none;" onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='">
 
     <!-- FORM SECTION -->
-    <div id="formContainer" class="max-w-3xl mx-auto w-full px-4 sm:px-6 pt-8 animate-fade-up">
-        <form id="absenceForm" onsubmit="handleFormSubmit(event)" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+    <div id="formContainer" class="max-w-3xl mx-auto w-full px-4 sm:px-6 pt-6 sm:pt-8 animate-fade-up">
+        <form id="absenceForm" onsubmit="handleFormSubmit(event)" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-8 w-full overflow-hidden">
             <div class="mb-6 border-b border-slate-100 pb-4">
                 <h3 class="text-xl font-bold text-slate-800">Employee Details</h3>
                 <p class="text-slate-500 text-sm mt-1">Please fill in the required information below.</p>
             </div>
 
             <!-- Grid Layout for Inputs -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                 
                 <!-- Name -->
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ឈ្មោះ / Name</label>
-                    <input name="entry.384490164" type="text" id="inName" lang="km" placeholder="បញ្ចូលឈ្មោះ" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                    <input name="entry.384490164" type="text" id="inName" lang="km" placeholder="បញ្ចូលឈ្មោះ" class="w-full max-w-full block bg-white border border-slate-300 rounded-lg px-4 h-[48px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] appearance-none text-center">
                 </div>
 
                 <!-- Gender -->
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ភេទ / Gender</label>
-                    <select id="inSex" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] bg-white">
+                    <select id="inSex" class="w-full max-w-full block bg-white border border-slate-300 rounded-lg px-4 h-[48px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] text-center">
                         <option value="" selected disabled hidden>ជ្រើសរើស</option>
                         <option value="2">ប្រុស / Male</option>
                         <option value="4">ស្រី / Female</option>
@@ -148,41 +188,41 @@
                 </div>
 
                 <!-- Position -->
-                <div class="md:col-span-2">
+                <div class="md:col-span-2 min-w-0">
                     <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">តួនាទី / Position</label>
-                    <input lang="km" type="text" id="inPosition" placeholder="បញ្ចូលតួនាទី" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                    <input lang="km" type="text" id="inPosition" placeholder="បញ្ចូលតួនាទី" class="w-full max-w-full block bg-white border border-slate-300 rounded-lg px-4 h-[48px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] appearance-none text-center">
                 </div>
 
                 <!-- Days off -->
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ចំនួនថ្ងៃឈប់ / Number of Days</label>
-                    <select name="entry.1197682587" id="inDays" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] bg-white">
+                    <select name="entry.1197682587" id="inDays" class="w-full max-w-full block bg-white border border-slate-300 rounded-lg px-4 h-[48px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] text-center">
                         <option value="" selected disabled hidden>ជ្រើសរើស / Select</option>
                     </select>
                 </div>
 
                 <!-- Start Date -->
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ចាប់ពីថ្ងៃទី / Start Date</label>
-                    <input name="entry.173238631" type="date" id="inDateF" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                    <input name="entry.173238631" type="date" id="inDateF" class="w-full max-w-full block bg-white border border-slate-300 rounded-lg px-4 h-[48px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] appearance-none">
                 </div>
             
                 <!-- End Date -->
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ដល់ថ្ងៃទី / End Date</label>
-                    <input name="entry.497671739" type="date" id="inDateT" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                    <input name="entry.497671739" type="date" id="inDateT" class="w-full max-w-full block bg-white border border-slate-300 rounded-lg px-4 h-[48px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] appearance-none">
                 </div>
             
                 <!-- Return Date -->
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ចូលធ្វើការវិញថ្ងៃទី / Return Date</label>
-                    <input name="entry.877231613" type="date" id="inDateI" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                    <input name="entry.877231613" type="date" id="inDateI" class="w-full max-w-full block bg-white border border-slate-300 rounded-lg px-4 h-[48px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] appearance-none">
                 </div>
 
                 <!-- Reason -->
-                <div class="md:col-span-2">
+                <div class="md:col-span-2 min-w-0">
                     <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">មូលហេតុ / Reason</label>
-                    <input name="entry.2040428057" type="text" lang="km" id="inReason" placeholder="បញ្ចូលមូលហេតុ..." class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] disabled:bg-slate-100 disabled:text-slate-500">
+                    <input name="entry.2040428057" type="text" lang="km" id="inReason" placeholder="បញ្ចូលមូលហេតុ..." class="w-full max-w-full block bg-white border border-slate-300 rounded-lg px-4 h-[48px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] disabled:bg-slate-100 disabled:text-slate-500 appearance-none text-center">
                 </div>
             </div>
 
@@ -200,38 +240,32 @@
     </div>
     
     <!-- PREVIEW SECTION -->
-    <div id="previewContainerWrapper" class="hidden max-w-2xl mx-auto w-full px-4 sm:px-6 pt-8 animate-fade-up">
+    <div id="previewContainerWrapper" class="hidden max-w-2xl mx-auto w-full px-4 sm:px-6 pt-6 sm:pt-8 animate-fade-up">
         
         <div class="mb-4 text-center">
             <h3 class="text-xl font-bold text-slate-800">Your Document is Ready</h3>
-            <p class="text-red-500 text-sm mt-1 font-medium bg-red-50 inline-block px-3 py-1 rounded-full">Note: Watermarks will be removed upon Download or Share.</p>
+            <p class="text-blue-600 text-sm mt-1 font-medium bg-blue-50 border border-blue-100 inline-block px-4 py-1.5 rounded-full shadow-sm">
+                Use the buttons below to download the clear image.
+            </p>
         </div>
 
-        <!-- The Canvas & Anti-Screenshot Overlays -->
+        <!-- The Canvas & Lens Overlay -->
         <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white group mx-auto" style="max-width: 720px;">
             
             <canvas id="result" width="720px" height="760px" class="block"></canvas>
             
-            <!-- Anti-Screenshot: Top Left Circle -->
-            <div class="absolute -top-10 -left-10 w-40 h-40 bg-slate-900/10 backdrop-blur-[4px] rounded-full flex items-center justify-center pointer-events-none border border-slate-900/10">
-                <span class="text-xs font-bold text-slate-700/80 -rotate-45 ml-10 mt-10 tracking-widest">PREVIEW</span>
+            <!-- Anti-Screenshot Lens Mask -->
+            <div class="blur-lens-overlay"></div>
+
+            <!-- Crisp visible border ring exactly matching the 85% clear area -->
+            <div class="absolute inset-0 z-20 pointer-events-none flex items-center justify-center">
+                <div class="w-[85%] aspect-square rounded-full border-2 border-slate-400/50 shadow-[0_0_15px_rgba(0,0,0,0.15)] ring-1 ring-white/30"></div>
             </div>
 
-            <!-- Anti-Screenshot: Bottom Right Circle -->
-            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-slate-900/10 backdrop-blur-[4px] rounded-full flex items-center justify-center pointer-events-none border border-slate-900/10">
-                <span class="text-xs font-bold text-slate-700/80 -rotate-45 mr-10 mb-10 tracking-widest">PREVIEW</span>
-            </div>
-
-            <!-- Anti-Screenshot: Center Watermark (Subtle) -->
-             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div class="w-64 h-64 border-8 border-slate-900/5 rounded-full flex items-center justify-center -rotate-12">
-                     <span class="text-4xl font-black text-slate-900/5 tracking-widest uppercase">Draft Only</span>
-                </div>
-            </div>
         </div>
 
         <!-- Action Buttons -->
-        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 mb-8">
             <button id="down" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md focus:outline-none focus:ring-4 focus:ring-slate-200 text-center flex justify-center items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
