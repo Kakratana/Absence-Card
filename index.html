@@ -6,25 +6,25 @@
   <meta name="description" content="Absence form generator for Sremeas.">
   <title>Absence Form Generator</title>
   
-  <!-- Tailwind CSS for the Landing Page UI -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     /* -------------------------------------------
-       GLOBAL & LANDING PAGE STYLES 
+       GLOBAL & CANVAS STYLES
        ------------------------------------------- */
-    body { font-family: 'Inter', sans-serif; }
+    body { 
+        font-family: 'Inter', sans-serif; 
+        background-color: #f8fafc; /* slate-50 */
+    }
     
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; }
+    .animate-fade-up { animation: fadeUp 0.5s ease-out forwards; }
 
-    /* -------------------------------------------
-       FORM & CANVAS CUSTOM STYLES (from style.css)
-       ------------------------------------------- */
     @font-face {
         font-family: 'Krasar';
         src: url("Krasar.woff") format('woff');
@@ -33,126 +33,29 @@
         font-display: swap;
     }
 
-    #formSection {
-        font-family: Helvetica, Arial, sans-serif;
-        background: #f8f9fa;
-        min-height: 100vh;
+    /* Keep the native dropdown arrow for select elements */
+    select {
+        -webkit-appearance: menulist !important;
+        -moz-appearance: menulist !important;
+        appearance: menulist !important;
+    }
+
+    /* Canvas styling */
+    canvas {
         width: 100%;
-        display: none; /* Hidden until a mode is selected */
-        padding-top: 20px;
-        padding-bottom: 80px; /* Space for the back button */
-    }
-
-    #formSection input:focus::placeholder { color: transparent; }
-    #formSection ::placeholder { color: #000000; opacity: 1; }
-
-    #formSection label {
-        font-family: 'Krasar', sans-serif;
-        font-size: 18px;
-    }
-    
-    #formSection h4 { color: #0D55B5; }
-
-    #formSection .back { margin-left: 2%; }
-
-    #formSection form { width: 40%; float: left; }
-
-    #formSection .container-form {
-        width: 40%;
-        float: left;
-        margin-top: 1em;
-        color: #000;
-        text-align: center;
-        display: none;
-        margin-left: 2%;
-    }
-
-    /* Force reset on inputs so Tailwind preflight doesn't clear borders */
-    #formSection input, #formSection select {
-        color: #000;
-        background-color: #ffffff;
-        display: block;
-        margin-bottom: 1em;
-        width: 100%;
-        font-size: 16px;
-        border: 1px solid #a7a7a7;
-        border-radius: 5px;
-        font-family: 'Krasar', sans-serif;
-        height: 40px;
-        padding: 9px;
-        box-sizing: border-box;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-    }
-    
-    #formSection select { padding: 5px 9px; }
-
-    #formSection .action-btn {
-        color: #fff;
-        background: #0D55B5;
-        padding: 10px;
-        border: 2px solid #0D55B5;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-        margin: auto;
-        font-size: 16px;
-    }
-
-    #formSection #down, #formSection #share {
-        width: auto;
-        display: inline-block;
-        padding: 10px 20px;
-        margin: 5px;
-    }
-
-    #formSection #result {
-        position: relative;
+        max-width: 720px;
         height: auto;
-        border-radius: 10px; /* Rounded corners instead of round circle for documents */
-        box-shadow: 0 0 10px rgba(13, 85, 181, 0.3);
-        background-color: #fff;
-        width: 100%;
-        aspect-ratio: auto 1 / 1.1;
-    }
-
-    .preferably-square { width: 100%; aspect-ratio: auto 1 / 1; }
-
-    .back-button {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #bababa;
-        color: rgb(0, 0, 0);
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        z-index: 100;
-    }
-
-    .back-button:hover { background-color: #0056b3; color: white; }
-
-    @media only screen and (max-width:768px) {
-        #formSection .container-form, #formSection form {
-            width: 90%;
-            margin-left: 5%;
-            float: none;
-        }
-        #formSection .back { margin-left: 0%; }
-        #formSection #result { width: 100%; }
+        aspect-ratio: 720 / 760;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
 
-  <!-- 1. LANDING PAGE MENU WRAPPER -->
-  <div id="mainMenuWrapper" class="flex items-center justify-center min-h-screen p-4 sm:p-8">
-    <main id="mainMenu" class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 w-full max-w-md p-8 sm:p-10 text-center animate-fade-up border border-slate-100">
+  <!-- ==========================================
+       1. LANDING PAGE MENU
+       ========================================== -->
+  <div id="mainMenuWrapper" class="flex flex-1 items-center justify-center p-4 sm:p-8">
+    <main class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 w-full max-w-md p-8 sm:p-10 text-center animate-fade-up border border-slate-100">
       
       <header class="mb-8">
         <div class="h-20 flex items-center justify-center mb-6">
@@ -160,7 +63,7 @@
             src="./Sremeas-Logo.webp" 
             alt="Sremeas Logo" 
             class="max-h-full w-auto object-contain drop-shadow-sm"
-            onerror="this.onerror=null; this.outerHTML='<div class=\'text-3xl font-bold text-blue-600 bg-blue-50 px-4 py-2 rounded-lg\'>Sremeas</div>'">
+            onerror="this.onerror=null; this.outerHTML='<div class=\'text-3xl font-bold text-blue-600 bg-blue-50 px-4 py-2 rounded-xl\'>Sremeas</div>'">
         </div>
         
         <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-3">Absence Form Generator</h1>
@@ -170,16 +73,16 @@
       <div class="flex flex-col sm:flex-row gap-4 justify-center w-full">
         <!-- Leave Button -->
         <button onclick="openForm('leave')"
-           class="group flex items-center justify-center gap-2 flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-blue-100">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+           class="group flex items-center justify-center gap-2 flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg> Leave
         </button>
 
         <!-- Day Off Button -->
         <button onclick="openForm('dayoff')"
-           class="group flex items-center justify-center gap-2 flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-100">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+           class="group flex items-center justify-center gap-2 flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg> Day Off
         </button>
@@ -187,66 +90,162 @@
     </main>
   </div>
 
-  <!-- 2. FORM AND PREVIEW SECTION -->
-  <div id="formSection">
-      
-      <!-- Hidden intermediate data for Canvas and Image Reference -->
-      <span id="KHinDateF" hidden></span>
-      <span id="KHinDateT" hidden></span>
-      <span id="KHinDateI" hidden></span>
-      <span id="KHinDays" hidden></span>
-      <img src="./Sremeas-Logo.webp" id="logo" style="display:none;" onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='">
 
-      <div class="back" id="formWrapper">
-          <form id="absenceForm" onsubmit="handleFormSubmit(event)">
-              <h4><center>Leave of Absence Letter</center></h4>
-              
-              <input name="entry.384490164" type="text" id="inName" lang="km" placeholder="ឈ្មោះ">
-              
-              <select style="width: 39%; float: left; margin-right: 2%;" id="inSex">
-                  <option value="" selected disabled hidden>ភេទ</option>
-                  <option value="2">ប្រុស</option>
-                  <option value="4">ស្រី</option>
-              </select>
-              
-              <input style="width: 59%;" lang="km" type="text" id="inPosition" placeholder="តួនាទី">
-              
-              <label style="width: 39%; float: left; margin-right: 2%; line-height: 40px;" for="inDays">ចំនួនថ្ងៃឈប់</label>            
-              <select name="entry.1197682587" style="width: 59%" id="inDays">
-                  <option value="" selected disabled hidden>ជ្រើសរើស</option>
-                  <!-- Options injected via Javascript -->
-              </select>
-              <div style="clear:both;"></div>
-
-              <label style="width: 39%; float: left; margin-right: 2%; line-height: 40px;" for="inDateF">ចាប់ពីថ្ងៃទី</label>
-              <input name="entry.173238631" style="width: 59%" type="date" id="inDateF">
-              <div style="clear:both;"></div>
+  <!-- ==========================================
+       2. APP INTERFACE (Header + Form/Preview)
+       ========================================== -->
+  <div id="appInterface" class="hidden flex-col flex-1 pb-12">
+    
+    <!-- Modern Sticky Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <button onclick="goHome()" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-medium transition-colors focus:outline-none rounded-lg py-2 px-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span class="hidden sm:inline">Back</span>
+            </button>
             
-              <label style="width: 39%; float: left; margin-right: 2%; line-height: 40px;" for="inDateT">ដល់ថ្ងៃទី</label>
-              <input name="entry.497671739" style="width: 59%" type="date" id="inDateT">
-              <div style="clear:both;"></div>
+            <h2 id="headerTitle" class="text-lg font-bold text-slate-800">Leave of Absence</h2>
             
-              <label style="width: 39%; float: left; margin-right: 2%; line-height: 40px;" for="inDateI">ចូលធ្វើការវិញថ្ងៃទី</label>
-              <input name="entry.877231613" style="width: 59%" type="date" id="inDateI">
-              <div style="clear:both;"></div>
+            <!-- Invisible placeholder to center the title perfectly -->
+            <div class="w-16 sm:w-20"></div> 
+        </div>
+    </header>
 
-              <input name="entry.2040428057" type="text" lang="km" id="inReason" placeholder="មូលហេតុ...">
-              
-              <button class="action-btn" type="submit"><b>Preview & Submit</b></button>
-          </form>
-      </div>
-      
-      <div class="container-form" id="show">
-          <div class="preferably-square">
-              <canvas id="result" width="720px" height="760px"></canvas>
-          </div>
-          <div style="margin-top: 15px;">
-              <button class="action-btn" id="down"><b>Download</b></button>
-              <button class="action-btn" id="share" onClick="onShares()"><b>Share Image</b></button>
-          </div>
-      </div>
-      
-      <button class="back-button" onclick="goHome()">Home Menu</button>
+    <!-- Hidden data spans -->
+    <span id="KHinDateF" hidden></span>
+    <span id="KHinDateT" hidden></span>
+    <span id="KHinDateI" hidden></span>
+    <span id="KHinDays" hidden></span>
+    <img src="./Sremeas-Logo.webp" id="logo" style="display:none;" onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='">
+
+    <!-- FORM SECTION -->
+    <div id="formContainer" class="max-w-3xl mx-auto w-full px-4 sm:px-6 pt-8 animate-fade-up">
+        <form id="absenceForm" onsubmit="handleFormSubmit(event)" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+            <div class="mb-6 border-b border-slate-100 pb-4">
+                <h3 class="text-xl font-bold text-slate-800">Employee Details</h3>
+                <p class="text-slate-500 text-sm mt-1">Please fill in the required information below.</p>
+            </div>
+
+            <!-- Grid Layout for Inputs -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Name -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ឈ្មោះ / Name</label>
+                    <input name="entry.384490164" type="text" id="inName" lang="km" placeholder="បញ្ចូលឈ្មោះ" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                </div>
+
+                <!-- Gender -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ភេទ / Gender</label>
+                    <select id="inSex" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] bg-white">
+                        <option value="" selected disabled hidden>ជ្រើសរើស</option>
+                        <option value="2">ប្រុស / Male</option>
+                        <option value="4">ស្រី / Female</option>
+                    </select>
+                </div>
+
+                <!-- Position -->
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">តួនាទី / Position</label>
+                    <input lang="km" type="text" id="inPosition" placeholder="បញ្ចូលតួនាទី" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                </div>
+
+                <!-- Days off -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ចំនួនថ្ងៃឈប់ / Number of Days</label>
+                    <select name="entry.1197682587" id="inDays" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] bg-white">
+                        <option value="" selected disabled hidden>ជ្រើសរើស / Select</option>
+                    </select>
+                </div>
+
+                <!-- Start Date -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ចាប់ពីថ្ងៃទី / Start Date</label>
+                    <input name="entry.173238631" type="date" id="inDateF" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                </div>
+            
+                <!-- End Date -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ដល់ថ្ងៃទី / End Date</label>
+                    <input name="entry.497671739" type="date" id="inDateT" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                </div>
+            
+                <!-- Return Date -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">ចូលធ្វើការវិញថ្ងៃទី / Return Date</label>
+                    <input name="entry.877231613" type="date" id="inDateI" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar']">
+                </div>
+
+                <!-- Reason -->
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-slate-700 mb-1 font-['Krasar']">មូលហេតុ / Reason</label>
+                    <input name="entry.2040428057" type="text" lang="km" id="inReason" placeholder="បញ្ចូលមូលហេតុ..." class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-['Krasar'] disabled:bg-slate-100 disabled:text-slate-500">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-8">
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md focus:outline-none focus:ring-4 focus:ring-blue-100 text-lg flex justify-center items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                        <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                    </svg>
+                    Preview & Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- PREVIEW SECTION -->
+    <div id="previewContainerWrapper" class="hidden max-w-2xl mx-auto w-full px-4 sm:px-6 pt-8 animate-fade-up">
+        
+        <div class="mb-4 text-center">
+            <h3 class="text-xl font-bold text-slate-800">Your Document is Ready</h3>
+            <p class="text-red-500 text-sm mt-1 font-medium bg-red-50 inline-block px-3 py-1 rounded-full">Note: Watermarks will be removed upon Download or Share.</p>
+        </div>
+
+        <!-- The Canvas & Anti-Screenshot Overlays -->
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white group mx-auto" style="max-width: 720px;">
+            
+            <canvas id="result" width="720px" height="760px" class="block"></canvas>
+            
+            <!-- Anti-Screenshot: Top Left Circle -->
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-slate-900/10 backdrop-blur-[4px] rounded-full flex items-center justify-center pointer-events-none border border-slate-900/10">
+                <span class="text-xs font-bold text-slate-700/80 -rotate-45 ml-10 mt-10 tracking-widest">PREVIEW</span>
+            </div>
+
+            <!-- Anti-Screenshot: Bottom Right Circle -->
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-slate-900/10 backdrop-blur-[4px] rounded-full flex items-center justify-center pointer-events-none border border-slate-900/10">
+                <span class="text-xs font-bold text-slate-700/80 -rotate-45 mr-10 mb-10 tracking-widest">PREVIEW</span>
+            </div>
+
+            <!-- Anti-Screenshot: Center Watermark (Subtle) -->
+             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-64 h-64 border-8 border-slate-900/5 rounded-full flex items-center justify-center -rotate-12">
+                     <span class="text-4xl font-black text-slate-900/5 tracking-widest uppercase">Draft Only</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <button id="down" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md focus:outline-none focus:ring-4 focus:ring-slate-200 text-center flex justify-center items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download Image
+            </button>
+            <button onClick="onShares()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md focus:outline-none focus:ring-4 focus:ring-blue-100 text-center flex justify-center items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                Share Image
+            </button>
+        </div>
+    </div>
   </div>
 
   <script>
@@ -293,25 +292,29 @@
         currentMode = mode;
         const form = document.getElementById('absenceForm');
         const reasonInput = document.getElementById('inReason');
+        const headerTitle = document.getElementById('headerTitle');
 
         // Toggle UI logic
         document.getElementById('mainMenuWrapper').style.display = 'none';
-        document.getElementById('formSection').style.display = 'block';
-        document.getElementById('formWrapper').style.display = 'block';
-        document.getElementById('show').style.display = 'none';
+        
+        document.getElementById('appInterface').style.display = 'flex';
+        document.getElementById('formContainer').style.display = 'block';
+        document.getElementById('previewContainerWrapper').style.display = 'none';
 
-        // Reset previous form entries safely
+        // Reset form safely
         form.reset();
         ['KHinDateF', 'KHinDateT', 'KHinDateI', 'KHinDays'].forEach(id => {
             document.getElementById(id).textContent = '';
         });
 
-        // Set parameters based on selection (Leave vs Day Off)
+        // Set parameters based on mode
         if (mode === 'dayoff') {
+            headerTitle.textContent = "Day Off Request";
             form.action = 'https://docs.google.com/forms/d/e/xxx/formResponse';
             reasonInput.value = 'Day Off';
             reasonInput.disabled = true;
         } else {
+            headerTitle.textContent = "Leave Request";
             form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSevkTqDT9Fv8-bZbUSTvxbJqR5RB_siYvk2PIZFBbN5GJeEZw/formResponse';
             reasonInput.value = '';
             reasonInput.disabled = false;
@@ -319,8 +322,8 @@
     }
 
     function goHome() {
+        document.getElementById('appInterface').style.display = 'none';
         document.getElementById('mainMenuWrapper').style.display = 'flex';
-        document.getElementById('formSection').style.display = 'none';
     }
 
     // --- UTILITIES ---
@@ -363,10 +366,9 @@
       
         for (const [id, name] of Object.entries(fields)) {
             const element = document.getElementById(id);
-            // Skip validation if the field is disabled (like Reason during Day Off mode)
             if (element && element.value.length === 0 && !element.disabled) {
                 alert(`សូម​បញ្ចូល "${name}" !`);
-                return; // Prevent submission entirely
+                return; 
             }
         }
 
@@ -376,8 +378,6 @@
 
         // 3. Send to Google Forms
         const formData = new FormData(event.target);
-        
-        // Ensure "Day Off" is submitted even if field is locked
         if(currentMode === 'dayoff') {
             formData.set('entry.2040428057', 'Day Off');
         }
@@ -387,7 +387,6 @@
                 method: event.target.method,
                 body: formData,
             });
-            // Silently complete without double-alerting the user
         } catch (error) {
             console.error("Network error during fetch submission.");
         }
@@ -395,14 +394,14 @@
 
     function drawCanvas() {
         // Toggle view
-        document.getElementById("formWrapper").style.display = "none";
-        document.getElementById("show").style.display = "block";
+        document.getElementById("formContainer").style.display = "none";
+        document.getElementById("previewContainerWrapper").style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
         const canvas = document.getElementById("result");
         const ctx = canvas.getContext("2d");
         const logo = document.getElementById("logo");
 
-        // Grab inputs
         let inName = document.getElementById("inName").value;
         let inSex = document.getElementById("inSex").value;
         let inPosition = document.getElementById("inPosition").value;
@@ -416,12 +415,12 @@
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, 800, 900);
         
-        // Mode specific Top Banner (Green for Day Off, Blue for Leave)
-        ctx.fillStyle = (currentMode === 'dayoff') ? "#28a745" : "#0D55B5";
+        // Banner Color
+        ctx.fillStyle = (currentMode === 'dayoff') ? "#10b981" : "#2563eb"; // Emerald-500 or Blue-600
         ctx.fillRect(0, 0, 800, 100);
         
         // Logo & Accents
-        ctx.fillStyle = "#0D55B5";
+        ctx.fillStyle = "#2563eb";
         ctx.fillRect(200, 570, 300, 2);
         try { ctx.drawImage(logo, 25, 15, 140, 70); } catch(e){}
         
@@ -434,35 +433,35 @@
         ctx.font = '20pt Krasar'; 
         ctx.fillStyle = "#000";
         ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
-        ctx.fillStyle = "#0D55B5";
+        ctx.fillStyle = "#2563eb";
         ctx.textAlign = "center";
         ctx.fillText(inName, 280, 150);
         ctx.fillStyle = "#000";
         ctx.textAlign = "start";
         ctx.fillText("តួនាទី", 380, 150);
-        ctx.fillStyle = "#0D55B5";
+        ctx.fillStyle = "#2563eb";
         ctx.fillText(inPosition, 450, 150);
         ctx.fillStyle = "#000";
         ctx.fillText("សូមគោរពជូនលោកប្រធានហាងស្រែមាស", 150, 210);
         ctx.fillText("កម្មវត្ថុ", 50, 270);
         ctx.fillText("សុំច្បាប់ឈប់សម្រាកចំនួន", 200, 270);
-        ctx.fillStyle = "#0D55B5";
+        ctx.fillStyle = "#2563eb";
         ctx.fillText(inDays, 470, 270);
         ctx.fillStyle = "#000";
         ctx.fillText("ចាប់ពីថ្ងៃទី", 50, 340);
-        ctx.fillStyle = "#0D55B5";
+        ctx.fillStyle = "#2563eb";
         ctx.fillText(inDateF, 250, 340);
         ctx.fillStyle = "#000";
         ctx.fillText("ដល់ថ្ងៃទី", 50, 410);
-        ctx.fillStyle = "#0D55B5";
+        ctx.fillStyle = "#2563eb";
         ctx.fillText(inDateT, 250, 410);
         ctx.fillStyle = "#000";
         ctx.fillText("ចូលធ្វើការវិញថ្ងៃទី", 50, 480);
-        ctx.fillStyle = "#0D55B5";
+        ctx.fillStyle = "#2563eb";
         ctx.fillText(inDateI, 250, 480);
         ctx.fillStyle = "#000";
         ctx.fillText("មូលហេតុ", 50, 550);
-        ctx.fillStyle = "#0D55B5";
+        ctx.fillStyle = "#2563eb";
         ctx.fillText(inReason, 250, 550);
         ctx.fillStyle = "#000";
         ctx.fillText("សេចក្តីដូចបានជម្រាបខាងលើ", 200, 620);
