@@ -3,82 +3,523 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Select your absence type: Leave or Day Off.">
+  <meta name="description" content="Absence form generator for Sremeas.">
   <title>Absence Form Generator</title>
   
-  <!-- Using Tailwind CSS for modern, highly-optimized styling -->
+  <!-- Tailwind CSS for the Landing Page UI -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Importing a clean, modern font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+    /* -------------------------------------------
+       GLOBAL & LANDING PAGE STYLES 
+       ------------------------------------------- */
+    body { font-family: 'Inter', sans-serif; }
     
-    /* Smooth fade-in animation for the card */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .animate-fade-up {
-      animation: fadeUp 0.6s ease-out forwards;
+    .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; }
+
+    /* -------------------------------------------
+       FORM & CANVAS CUSTOM STYLES (from style.css)
+       ------------------------------------------- */
+    @font-face {
+        font-family: 'Krasar';
+        src: url("Krasar.woff") format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    #formSection {
+        font-family: Helvetica, Arial, sans-serif;
+        background: #f8f9fa;
+        min-height: 100vh;
+        width: 100%;
+        display: none; /* Hidden until a mode is selected */
+        padding-top: 20px;
+        padding-bottom: 80px; /* Space for the back button */
+    }
+
+    #formSection input:focus::placeholder { color: transparent; }
+    #formSection ::placeholder { color: #000000; opacity: 1; }
+
+    #formSection label {
+        font-family: 'Krasar', sans-serif;
+        font-size: 18px;
+    }
+    
+    #formSection h4 { color: #0D55B5; }
+
+    #formSection .back { margin-left: 2%; }
+
+    #formSection form { width: 40%; float: left; }
+
+    #formSection .container-form {
+        width: 40%;
+        float: left;
+        margin-top: 1em;
+        color: #000;
+        text-align: center;
+        display: none;
+        margin-left: 2%;
+    }
+
+    /* Force reset on inputs so Tailwind preflight doesn't clear borders */
+    #formSection input, #formSection select {
+        color: #000;
+        background-color: #ffffff;
+        display: block;
+        margin-bottom: 1em;
+        width: 100%;
+        font-size: 16px;
+        border: 1px solid #a7a7a7;
+        border-radius: 5px;
+        font-family: 'Krasar', sans-serif;
+        height: 40px;
+        padding: 9px;
+        box-sizing: border-box;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    
+    #formSection select { padding: 5px 9px; }
+
+    #formSection .action-btn {
+        color: #fff;
+        background: #0D55B5;
+        padding: 10px;
+        border: 2px solid #0D55B5;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin: auto;
+        font-size: 16px;
+    }
+
+    #formSection #down, #formSection #share {
+        width: auto;
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+    }
+
+    #formSection #result {
+        position: relative;
+        height: auto;
+        border-radius: 10px; /* Rounded corners instead of round circle for documents */
+        box-shadow: 0 0 10px rgba(13, 85, 181, 0.3);
+        background-color: #fff;
+        width: 100%;
+        aspect-ratio: auto 1 / 1.1;
+    }
+
+    .preferably-square { width: 100%; aspect-ratio: auto 1 / 1; }
+
+    .back-button {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #bababa;
+        color: rgb(0, 0, 0);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        z-index: 100;
+    }
+
+    .back-button:hover { background-color: #0056b3; color: white; }
+
+    @media only screen and (max-width:768px) {
+        #formSection .container-form, #formSection form {
+            width: 90%;
+            margin-left: 5%;
+            float: none;
+        }
+        #formSection .back { margin-left: 0%; }
+        #formSection #result { width: 100%; }
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex items-center justify-center p-4 sm:p-8">
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen">
 
-  <!-- Main Card Container -->
-  <main class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 w-full max-w-md p-8 sm:p-10 text-center animate-fade-up border border-slate-100">
-    
-    <!-- Header Section -->
-    <header class="mb-8">
-      <!-- Image with a fallback mechanism if the local file is missing -->
-      <div class="h-20 flex items-center justify-center mb-6">
-        <img 
-          src="./Sremeas-Logo.webp" 
-          alt="Sremeas Logo" 
-          id="logo"
-          class="max-h-full w-auto object-contain drop-shadow-sm"
-          onerror="this.onerror=null; this.outerHTML='<div class=\'text-3xl font-bold text-blue-600 bg-blue-50 px-4 py-2 rounded-lg\'>Sremeas</div>'"
-        >
+  <!-- 1. LANDING PAGE MENU WRAPPER -->
+  <div id="mainMenuWrapper" class="flex items-center justify-center min-h-screen p-4 sm:p-8">
+    <main id="mainMenu" class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 w-full max-w-md p-8 sm:p-10 text-center animate-fade-up border border-slate-100">
+      
+      <header class="mb-8">
+        <div class="h-20 flex items-center justify-center mb-6">
+          <img 
+            src="./Sremeas-Logo.webp" 
+            alt="Sremeas Logo" 
+            class="max-h-full w-auto object-contain drop-shadow-sm"
+            onerror="this.onerror=null; this.outerHTML='<div class=\'text-3xl font-bold text-blue-600 bg-blue-50 px-4 py-2 rounded-lg\'>Sremeas</div>'">
+        </div>
+        
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-3">Absence Form Generator</h1>
+        <p class="text-slate-500 text-sm sm:text-base">Please select one of the following options to proceed.</p>
+      </header>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center w-full">
+        <!-- Leave Button -->
+        <button onclick="openForm('leave')"
+           class="group flex items-center justify-center gap-2 flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-blue-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg> Leave
+        </button>
+
+        <!-- Day Off Button -->
+        <button onclick="openForm('dayoff')"
+           class="group flex items-center justify-center gap-2 flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg> Day Off
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- 2. FORM AND PREVIEW SECTION -->
+  <div id="formSection">
+      
+      <!-- Hidden intermediate data for Canvas and Image Reference -->
+      <span id="KHinDateF" hidden></span>
+      <span id="KHinDateT" hidden></span>
+      <span id="KHinDateI" hidden></span>
+      <span id="KHinDays" hidden></span>
+      <img src="./Sremeas-Logo.webp" id="logo" style="display:none;" onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='">
+
+      <div class="back" id="formWrapper">
+          <form id="absenceForm" onsubmit="handleFormSubmit(event)">
+              <h4><center>Leave of Absence Letter</center></h4>
+              
+              <input name="entry.384490164" type="text" id="inName" lang="km" placeholder="ឈ្មោះ">
+              
+              <select style="width: 39%; float: left; margin-right: 2%;" id="inSex">
+                  <option value="" selected disabled hidden>ភេទ</option>
+                  <option value="2">ប្រុស</option>
+                  <option value="4">ស្រី</option>
+              </select>
+              
+              <input style="width: 59%;" lang="km" type="text" id="inPosition" placeholder="តួនាទី">
+              
+              <label style="width: 39%; float: left; margin-right: 2%; line-height: 40px;" for="inDays">ចំនួនថ្ងៃឈប់</label>            
+              <select name="entry.1197682587" style="width: 59%" id="inDays">
+                  <option value="" selected disabled hidden>ជ្រើសរើស</option>
+                  <!-- Options injected via Javascript -->
+              </select>
+              <div style="clear:both;"></div>
+
+              <label style="width: 39%; float: left; margin-right: 2%; line-height: 40px;" for="inDateF">ចាប់ពីថ្ងៃទី</label>
+              <input name="entry.173238631" style="width: 59%" type="date" id="inDateF">
+              <div style="clear:both;"></div>
+            
+              <label style="width: 39%; float: left; margin-right: 2%; line-height: 40px;" for="inDateT">ដល់ថ្ងៃទី</label>
+              <input name="entry.497671739" style="width: 59%" type="date" id="inDateT">
+              <div style="clear:both;"></div>
+            
+              <label style="width: 39%; float: left; margin-right: 2%; line-height: 40px;" for="inDateI">ចូលធ្វើការវិញថ្ងៃទី</label>
+              <input name="entry.877231613" style="width: 59%" type="date" id="inDateI">
+              <div style="clear:both;"></div>
+
+              <input name="entry.2040428057" type="text" lang="km" id="inReason" placeholder="មូលហេតុ...">
+              
+              <button class="action-btn" type="submit"><b>Preview & Submit</b></button>
+          </form>
       </div>
       
-      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-3">
-        Absence Form Generator
-      </h1>
-      <p class="text-slate-500 text-sm sm:text-base">
-        Please select one of the following options to proceed.
-      </p>
-    </header>
-
-    <!-- Action Buttons Container -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center w-full">
+      <div class="container-form" id="show">
+          <div class="preferably-square">
+              <canvas id="result" width="720px" height="760px"></canvas>
+          </div>
+          <div style="margin-top: 15px;">
+              <button class="action-btn" id="down"><b>Download</b></button>
+              <button class="action-btn" id="share" onClick="onShares()"><b>Share Image</b></button>
+          </div>
+      </div>
       
-      <!-- Leave Link/Button -->
-      <a href="leave.html" 
-         class="group flex items-center justify-center gap-2 flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-blue-100 active:translate-y-0">
-        <!-- SVG Calendar Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        Leave
-      </a>
+      <button class="back-button" onclick="goHome()">Home Menu</button>
+  </div>
 
-      <!-- Day Off Link/Button -->
-      <a href="day-off.html" 
-         class="group flex items-center justify-center gap-2 flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-100 active:translate-y-0">
-        <!-- SVG Coffee/Rest Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        Day Off
-      </a>
+  <script>
+    // --- GLOBAL VARIABLES & DATA ---
+    let currentMode = 'leave'; 
+    const khmerMonths = ["មករា", "កុម្ភៈ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"];
+    const khmerNumbers = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
+
+    // --- INITIALIZATION ---
+    window.onload = function() {
+      // Setup Days Select options
+      const select = document.getElementById('inDays');
+      for (let i = 1; i <= 7; i++) {
+          const option = document.createElement('option');
+          option.value = i;
+          option.textContent = i;
+          select.appendChild(option);
+      }
+      const optionHalf = document.createElement('option');
+      optionHalf.value = "0.5";
+      optionHalf.textContent = "0.5";
+      select.appendChild(optionHalf);
+
+      // Setup Date Handlers
+      const dateInputs = ['inDateF', 'inDateT', 'inDateI'];
+      dateInputs.forEach(id => {
+          document.getElementById(id).addEventListener('change', function () {
+              const date = new Date(this.value);
+              const targetSpan = document.getElementById('KH' + id);
+              if (!isNaN(date)) {
+                  const day = date.getDate().toString().replace(/\d/g, d => String.fromCharCode(6112 + parseInt(d))); 
+                  const month = khmerMonths[date.getMonth()];
+                  const year = date.getFullYear().toString().replace(/\d/g, d => String.fromCharCode(6112 + parseInt(d)));
+                  targetSpan.textContent = `${day}.${month}.${year}`;
+              } else {
+                  targetSpan.textContent = "";
+              }
+          });
+      });
+    };
+
+    // --- VIEW CONTROLLERS ---
+    function openForm(mode) {
+        currentMode = mode;
+        const form = document.getElementById('absenceForm');
+        const reasonInput = document.getElementById('inReason');
+
+        // Toggle UI logic
+        document.getElementById('mainMenuWrapper').style.display = 'none';
+        document.getElementById('formSection').style.display = 'block';
+        document.getElementById('formWrapper').style.display = 'block';
+        document.getElementById('show').style.display = 'none';
+
+        // Reset previous form entries safely
+        form.reset();
+        ['KHinDateF', 'KHinDateT', 'KHinDateI', 'KHinDays'].forEach(id => {
+            document.getElementById(id).textContent = '';
+        });
+
+        // Set parameters based on selection (Leave vs Day Off)
+        if (mode === 'dayoff') {
+            form.action = 'https://docs.google.com/forms/d/e/xxx/formResponse';
+            reasonInput.value = 'Day Off';
+            reasonInput.disabled = true;
+        } else {
+            form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSevkTqDT9Fv8-bZbUSTvxbJqR5RB_siYvk2PIZFBbN5GJeEZw/formResponse';
+            reasonInput.value = '';
+            reasonInput.disabled = false;
+        }
+    }
+
+    function goHome() {
+        document.getElementById('mainMenuWrapper').style.display = 'flex';
+        document.getElementById('formSection').style.display = 'none';
+    }
+
+    // --- UTILITIES ---
+    function convertToKhmer() {
+        let inputValue = document.getElementById('inDays').value;
+        if (!inputValue) return;
+        
+        let integerPart = Math.floor(inputValue);
+        let decimalPart = inputValue.split('.')[1] || '';
+        let khmerValue = '';
+
+        for (let i = 0; i < integerPart.toString().length; i++) {
+            khmerValue += khmerNumbers[parseInt(integerPart.toString()[i])];
+        }
+
+        if (decimalPart) {
+            khmerValue += '.';
+            for (let i = 0; i < decimalPart.length; i++) {
+                khmerValue += khmerNumbers[parseInt(decimalPart[i])];
+            }
+        }
+        document.getElementById('KHinDays').innerText = khmerValue;
+    }
+
+    // --- FORM SUBMISSION & CANVAS PIPELINE ---
+    async function handleFormSubmit(event) {
+        event.preventDefault();
+
+        // 1. Validate Form
+        const fields = {
+            inName: "ឈ្មោះ",
+            inSex: "ភេទ",
+            inPosition: "តួនាទី",
+            inDays: "ចំនួនថ្ងៃឈប់",
+            inDateF: "ថ្ងៃចាប់ផ្តើម",
+            inDateT: "ថ្ងៃបញ្ចប់",
+            inDateI: "ថ្ងៃចូល​ធ្វើការវិញ",
+            inReason: "មូលហេតុ"            
+        };
       
-    </div>
-  </main>
+        for (const [id, name] of Object.entries(fields)) {
+            const element = document.getElementById(id);
+            // Skip validation if the field is disabled (like Reason during Day Off mode)
+            if (element && element.value.length === 0 && !element.disabled) {
+                alert(`សូម​បញ្ចូល "${name}" !`);
+                return; // Prevent submission entirely
+            }
+        }
 
+        // 2. Prepare Data & Canvas
+        convertToKhmer();
+        drawCanvas();
+
+        // 3. Send to Google Forms
+        const formData = new FormData(event.target);
+        
+        // Ensure "Day Off" is submitted even if field is locked
+        if(currentMode === 'dayoff') {
+            formData.set('entry.2040428057', 'Day Off');
+        }
+
+        try {
+            const response = await fetch(event.target.action, {
+                method: event.target.method,
+                body: formData,
+            });
+            // Silently complete without double-alerting the user
+        } catch (error) {
+            console.error("Network error during fetch submission.");
+        }
+    }
+
+    function drawCanvas() {
+        // Toggle view
+        document.getElementById("formWrapper").style.display = "none";
+        document.getElementById("show").style.display = "block";
+
+        const canvas = document.getElementById("result");
+        const ctx = canvas.getContext("2d");
+        const logo = document.getElementById("logo");
+
+        // Grab inputs
+        let inName = document.getElementById("inName").value;
+        let inSex = document.getElementById("inSex").value;
+        let inPosition = document.getElementById("inPosition").value;
+        let inDays = document.getElementById("KHinDays").textContent + " ថ្ងៃ";
+        let inDateF = document.getElementById("KHinDateF").textContent;
+        let inDateT = document.getElementById("KHinDateT").textContent;
+        let inDateI = document.getElementById("KHinDateI").textContent;
+        let inReason = document.getElementById("inReason").value;
+
+        // Background
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, 800, 900);
+        
+        // Mode specific Top Banner (Green for Day Off, Blue for Leave)
+        ctx.fillStyle = (currentMode === 'dayoff') ? "#28a745" : "#0D55B5";
+        ctx.fillRect(0, 0, 800, 100);
+        
+        // Logo & Accents
+        ctx.fillStyle = "#0D55B5";
+        ctx.fillRect(200, 570, 300, 2);
+        try { ctx.drawImage(logo, 25, 15, 140, 70); } catch(e){}
+        
+        // Header Text
+        ctx.font = '22pt Krasar'; 
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText("ពាក្យស្នើសុំអនុញ្ញាតឈប់សម្រាក", 200, 68);
+        
+        // Content Text
+        ctx.font = '20pt Krasar'; 
+        ctx.fillStyle = "#000";
+        ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
+        ctx.fillStyle = "#0D55B5";
+        ctx.textAlign = "center";
+        ctx.fillText(inName, 280, 150);
+        ctx.fillStyle = "#000";
+        ctx.textAlign = "start";
+        ctx.fillText("តួនាទី", 380, 150);
+        ctx.fillStyle = "#0D55B5";
+        ctx.fillText(inPosition, 450, 150);
+        ctx.fillStyle = "#000";
+        ctx.fillText("សូមគោរពជូនលោកប្រធានហាងស្រែមាស", 150, 210);
+        ctx.fillText("កម្មវត្ថុ", 50, 270);
+        ctx.fillText("សុំច្បាប់ឈប់សម្រាកចំនួន", 200, 270);
+        ctx.fillStyle = "#0D55B5";
+        ctx.fillText(inDays, 470, 270);
+        ctx.fillStyle = "#000";
+        ctx.fillText("ចាប់ពីថ្ងៃទី", 50, 340);
+        ctx.fillStyle = "#0D55B5";
+        ctx.fillText(inDateF, 250, 340);
+        ctx.fillStyle = "#000";
+        ctx.fillText("ដល់ថ្ងៃទី", 50, 410);
+        ctx.fillStyle = "#0D55B5";
+        ctx.fillText(inDateT, 250, 410);
+        ctx.fillStyle = "#000";
+        ctx.fillText("ចូលធ្វើការវិញថ្ងៃទី", 50, 480);
+        ctx.fillStyle = "#0D55B5";
+        ctx.fillText(inDateI, 250, 480);
+        ctx.fillStyle = "#000";
+        ctx.fillText("មូលហេតុ", 50, 550);
+        ctx.fillStyle = "#0D55B5";
+        ctx.fillText(inReason, 250, 550);
+        ctx.fillStyle = "#000";
+        ctx.fillText("សេចក្តីដូចបានជម្រាបខាងលើ", 200, 620);
+        ctx.fillText("សូមលោកប្រធានមេត្តាអនុញ្ញាតដោយក្តីអនុគ្រោះ", 100, 670);
+        ctx.fillText("សូមលោកប្រធានទទួលការគោរពដ៏ខ្ពង់ខ្ពស់អំពីខ្ញុំបាទ/នាងខ្ញុំ។", 50, 720); 
+        
+        // Gender Line Strike
+        if (inSex == "2") {      
+            ctx.fillRect(122, 142, 60, 2);
+            ctx.fillRect(582, 712, 60, 2);
+        } else {       
+            ctx.fillRect(50, 142, 60, 2);
+            ctx.fillRect(512, 712, 60, 2);
+        }
+    }
+
+    // --- SHARE & DOWNLOAD CONTROLS ---
+    document.getElementById("down").addEventListener("click", function(){
+        const canvas = document.getElementById("result");
+        if(window.navigator.msSaveBlob) {
+            window.navigator.msSaveBlob(canvas.msToBlob(), "AbsenceCard.png");
+        } else {
+            const a = document.createElement("a");
+            document.body.appendChild(a);
+            a.href = canvas.toDataURL("image/png");
+            a.download = "AbsenceCard.png";
+            a.click();
+            document.body.removeChild(a);
+        }
+    });
+
+    async function onShares() {
+        const canvas = document.getElementById("result");
+        const dataUrl = canvas.toDataURL();
+        const blob = await (await fetch(dataUrl)).blob(); 
+        const filesArray = [
+            new File([blob], 'AbsenceCard.png', { type: blob.type, lastModified: new Date().getTime() })
+        ]; 
+
+        const inSex = document.getElementById("inSex").value;
+        const inputName = document.getElementById("inName").value;
+        const mF = (inSex == "2") ? "ខ្ញុំបាទ" : "នាង​ខ្ញុំ";
+           
+        const textShow = `សូមគោរព ជំរាបសួរលោកប្រធាន និងថ្នាក់ដឹកនាំ។ ${mF} ${inputName} សុំអនុញ្ញាតច្បាប់សម្រាកដូចទម្រង់ខាងលើដោយក្តីអនុគ្រោះ។`;
+
+        const shareData = {
+            text: textShow,
+            files: filesArray
+        }; 
+        
+        try {
+            await navigator.share(shareData);
+        } catch (err) {
+            console.log('Error sharing:', err);
+        }
+    }
+  </script>
 </body>
 </html>
 
