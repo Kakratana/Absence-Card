@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Select your absence type: Leave or Day Off.">
+  <title>Absence Form Generator</title>
+  
+  <!-- Using Tailwind CSS for modern, highly-optimized styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Importing a clean, modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    /* Smooth fade-in animation for the card */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeUp 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex items-center justify-center p-4 sm:p-8">
+
+  <!-- Main Card Container -->
+  <main class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 w-full max-w-md p-8 sm:p-10 text-center animate-fade-up border border-slate-100">
+    
+    <!-- Header Section -->
+    <header class="mb-8">
+      <!-- Image with a fallback mechanism if the local file is missing -->
+      <div class="h-20 flex items-center justify-center mb-6">
+        <img 
+          src="./Sremeas-Logo.webp" 
+          alt="Sremeas Logo" 
+          id="logo"
+          class="max-h-full w-auto object-contain drop-shadow-sm"
+          onerror="this.onerror=null; this.outerHTML='<div class=\'text-3xl font-bold text-blue-600 bg-blue-50 px-4 py-2 rounded-lg\'>Sremeas</div>'"
+        >
+      </div>
+      
+      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-3">
+        Absence Form Generator
+      </h1>
+      <p class="text-slate-500 text-sm sm:text-base">
+        Please select one of the following options to proceed.
+      </p>
+    </header>
+
+    <!-- Action Buttons Container -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center w-full">
+      
+      <!-- Leave Link/Button -->
+      <a href="leave.html" 
+         class="group flex items-center justify-center gap-2 flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-blue-100 active:translate-y-0">
+        <!-- SVG Calendar Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        Leave
+      </a>
+
+      <!-- Day Off Link/Button -->
+      <a href="day-off.html" 
+         class="group flex items-center justify-center gap-2 flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-100 active:translate-y-0">
+        <!-- SVG Coffee/Rest Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 opacity-90 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Day Off
+      </a>
+      
+    </div>
+  </main>
+
+</body>
+</html>
+
 
