@@ -78,9 +78,7 @@
         inset: 0;
         -webkit-backdrop-filter: blur(14px);
         backdrop-filter: blur(14px);
-        /* Circle radius is set dynamically to closest-side and placed dead center.
-           The transparent area stops at 85% of the container's half-width.
-        */
+        /* Circle radius is set dynamically to closest-side and placed dead center. */
         -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, transparent 85%, black 110%);
         mask-image: radial-gradient(circle closest-side at 50% 50%, transparent 85%, black 110%);
         pointer-events: none;
@@ -292,12 +290,22 @@
     window.onload = function() {
       // Setup Days Select options
       const select = document.getElementById('inDays');
+      
+      // Options 1 to 7
       for (let i = 1; i <= 7; i++) {
           const option = document.createElement('option');
           option.value = i;
           option.textContent = i;
           select.appendChild(option);
       }
+
+      // Add specific option for 90 days
+      const option90 = document.createElement('option');
+      option90.value = "90";
+      option90.textContent = "90";
+      select.appendChild(option90);
+
+      // Add 0.5 option
       const optionHalf = document.createElement('option');
       optionHalf.value = "0.5";
       optionHalf.textContent = "0.5";
@@ -555,5 +563,4 @@
   </script>
 </body>
 </html>
-
 
