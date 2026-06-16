@@ -91,7 +91,7 @@ function prev() {
       ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
       ctx.fillStyle = "#0D55B5";
       ctx.textAlign = "center";
-      ctx.fillText(name.innerHTML, 280, 150);
+      ctx.fillText(name.innerHTML, 250, 150);
       ctx.fillStyle = "#000";
       ctx.textAlign = "start";
       ctx.fillText("តួនាទី", 380, 150);
