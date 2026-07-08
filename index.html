@@ -210,6 +210,12 @@
                 document.getElementById(id).textContent = '';
             });
 
+            // Re-trigger the start date calculation on form reset so it sets to Today again
+            const today = new Date();
+            const localToday = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+            document.getElementById('inDateF').value = localToday;
+            document.getElementById('inDateF').dispatchEvent(new Event('change'));
+
             if (mode === 'dayoff') {
                 title.textContent = 'Day Off Request Letter';
                 title.classList.replace('text-primary', 'text-success');
@@ -244,6 +250,49 @@
                 }
             });
         });
+
+        // --- NEW DATE CALCULATION LOGIC ---
+        function autoCalculateDates() {
+            const startDateInput = document.getElementById('inDateF').value;
+            const daysInput = parseFloat(document.getElementById('inDays').value);
+
+            if (startDateInput && !isNaN(daysInput)) {
+                const startDate = new Date(startDateInput);
+                
+                // Calculate End Date: Start Date + (Days - 1)
+                const daysToAdd = Math.max(0, Math.ceil(daysInput) - 1); 
+                
+                const endDate = new Date(startDate);
+                endDate.setDate(startDate.getDate() + daysToAdd);
+                
+                // Calculate Return Date: End Date + 1 day
+                const returnDate = new Date(endDate);
+                returnDate.setDate(endDate.getDate() + 1);
+
+                // Format nicely to YYYY-MM-DD
+                const endFormatted = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+                const returnFormatted = new Date(returnDate.getTime() - (returnDate.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+
+                document.getElementById('inDateT').value = endFormatted;
+                document.getElementById('inDateT').dispatchEvent(new Event('change'));
+
+                document.getElementById('inDateI').value = returnFormatted;
+                document.getElementById('inDateI').dispatchEvent(new Event('change'));
+            }
+        }
+
+        // Set Start Date to Today on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const localToday = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+            
+            document.getElementById('inDateF').value = localToday;
+            document.getElementById('inDateF').dispatchEvent(new Event('change')); 
+        });
+
+        document.getElementById('inDays').addEventListener('change', autoCalculateDates);
+        document.getElementById('inDateF').addEventListener('change', autoCalculateDates);
+        // --- END DATE CALCULATION LOGIC ---
 
         function convertToKhmer() {
             const khmerNumbers = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
@@ -311,14 +360,16 @@
             ctx.font = '20pt Krasar'; 
             ctx.fillStyle = "#000";
             ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
+            
             ctx.fillStyle = "#0d6efd";
-            //ctx.textAlign = "center";
             ctx.fillText(inName, 200, 150);
+            
             ctx.fillStyle = "#000";
-            ctx.textAlign = "start";
             ctx.fillText("តួនាទី", 380, 150);
+            
             ctx.fillStyle = "#0d6efd";
             ctx.fillText(inPosition, 450, 150);
+            
             ctx.fillStyle = "#000";
             ctx.fillText("សូមគោរពជូនលោកប្រធានហាងស្រែមាស", 150, 210);
             ctx.fillText("កម្មវត្ថុ", 50, 270);
