@@ -37,6 +37,14 @@
         /* Utility specific to the app */
         .app-view { display: none; }
         .active-view { display: block; }
+
+        /* Make select placeholder gray like text inputs */
+        select:invalid {
+            color: #6c757d !important;
+        }
+        select option {
+            color: #212529; /* Normal text color for dropdown items */
+        }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -80,21 +88,18 @@
                                 <div class="row g-3">
                                     
                                     <div class="col-md-6">
-                                        <label for="inName" class="form-label text-muted">ឈ្មោះ / Name</label>
                                         <input name="entry.384490164" type="text" class="form-control form-control-lg" id="inName" lang="km" placeholder="បញ្ចូលឈ្មោះ" required>
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <label for="inSex" class="form-label text-muted">ភេទ / Gender</label>
                                         <select class="form-select form-select-lg" id="inSex" required>
-                                            <option value="" selected disabled hidden>ជ្រើសរើស / Select</option>
+                                            <option value="" selected disabled hidden>ជ្រើសរើសភេទ</option>
                                             <option value="2">ប្រុស / Male</option>
                                             <option value="4">ស្រី / Female</option>
                                         </select>
                                     </div>
                                     
                                     <div class="col-12">
-                                        <label for="inPosition" class="form-label text-muted">តួនាទី / Position</label>
                                         <input lang="km" type="text" class="form-control form-control-lg" id="inPosition" placeholder="បញ្ចូលតួនាទី" required>
                                     </div>
                                     
