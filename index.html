@@ -308,15 +308,34 @@
             ctx.fillStyle = "#ffffff";
             ctx.fillText("ពាក្យស្នើសុំអនុញ្ញាតឈប់សម្រាក", 200, 68);
             
+            // --- PERFECT CENTERING OF NAME LOGIC START ---
             ctx.font = '20pt Krasar'; 
+            ctx.textAlign = "start";
+            
+            // 1. Draw the first phrase
             ctx.fillStyle = "#000";
-            ctx.fillText("ខ្ញុំបាទ/នាងខ្ញុំ", 50, 150);
-            ctx.fillStyle = "#0d6efd";
+            const phrase1 = "ខ្ញុំបាទ/នាងខ្ញុំ";
+            ctx.fillText(phrase1, 50, 150);
+            
+            // 2. Measure the exact width to find the middle space
+            const phrase1Width = ctx.measureText(phrase1).width;
+            const endOfPhrase1 = 50 + phrase1Width;
+            const startOfPhrase2 = 380; // "តួនាទី" starts here
+            
+            // Calculate the exact center between the two words
+            const centerPoint = endOfPhrase1 + ((startOfPhrase2 - endOfPhrase1) / 2);
+            
+            // 3. Draw the Name exactly in the center
+            ctx.fillStyle = (currentMode === 'dayoff') ? "#198754" : "#0d6efd"; 
             ctx.textAlign = "center";
-            ctx.fillText(inName, 280, 150);
+            ctx.fillText(inName, centerPoint, 150);
+            
+            // 4. Draw the second phrase ("តួនាទី")
             ctx.fillStyle = "#000";
             ctx.textAlign = "start";
-            ctx.fillText("តួនាទី", 380, 150);
+            ctx.fillText("តួនាទី", startOfPhrase2, 150);
+            // --- PERFECT CENTERING OF NAME LOGIC END ---
+
             ctx.fillStyle = "#0d6efd";
             ctx.fillText(inPosition, 450, 150);
             ctx.fillStyle = "#000";
